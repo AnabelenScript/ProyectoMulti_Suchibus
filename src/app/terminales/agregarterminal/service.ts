@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TerminalService {
-  private apiUrl = 'http://localhost:3000/terminales'; 
+  private apiUrl = 'http://localhost:5000/terminales'; 
 
   constructor(private http: HttpClient) {}
 

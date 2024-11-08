@@ -6,6 +6,8 @@ import { TerminalesListComponent } from './terminales-list/terminales-list.compo
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AgregarterminalComponent } from './agregarterminal/agregarterminal.component';
+import { MiTerminalComponent } from './mi-terminal/mi-terminal.component';
+import { TerminalComponent } from './terminal/terminal.component';
 
 
 
@@ -13,7 +15,9 @@ import { AgregarterminalComponent } from './agregarterminal/agregarterminal.comp
 @NgModule({
   declarations: [
     TerminalesListComponent,
-    AgregarterminalComponent
+    AgregarterminalComponent,
+    MiTerminalComponent,
+    TerminalComponent
    
   ],
   imports: [
@@ -25,7 +29,8 @@ import { AgregarterminalComponent } from './agregarterminal/agregarterminal.comp
   ],
   exports:[
    TerminalesListComponent,
-   AgregarterminalComponent
+   AgregarterminalComponent,
+   TerminalComponent
   ],
   providers: []
 })
