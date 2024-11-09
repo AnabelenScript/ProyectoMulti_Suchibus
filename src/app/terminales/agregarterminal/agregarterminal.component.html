@@ -1,0 +1,29 @@
+<h1>Agregar Terminal</h1>
+<div class="add-terminal-container">
+  <div class="form-container">
+    <div class="form-fields">
+      <div class="input-group">
+        <input type="text" placeholder="Nombre" [(ngModel)]="terminalData.nombre">
+        <input type="text" placeholder="Num Exterior" [(ngModel)]="terminalData.num">
+      </div>
+      <div class="input-group">
+        <input type="text" placeholder="Calle" [(ngModel)]="terminalData.calle">
+        <input type="text" placeholder="Teléfono" [(ngModel)]="terminalData.telefono">
+      </div>
+      <div class="input-group">
+        <input type="text" placeholder="Colonia" [(ngModel)]="terminalData.colonia">
+        <input type="text" placeholder="Horario de apertura" [(ngModel)]="terminalData.horarioApertura">
+      </div>
+      <div class="input-group">
+        <input type="text" placeholder="Municipio" [(ngModel)]="terminalData.ciudad">
+        <input type="text" placeholder="Horario de cierre" [(ngModel)]="terminalData.horarioCierre">
+      </div>
+      <button class="add-button" (click)="agregarTerminal()">Agregar</button>
+    </div>
+    <div class="map-container">
+      <h3>Ubicación en el mapa</h3>
+      <p>Calle San Juan, 5 de Mayo, Suchiapa, Chiapas</p>
+      <img src="https://via.placeholder.com/300x200" alt="Mapa de ubicación">
+    </div>
+  </div>
+</div>

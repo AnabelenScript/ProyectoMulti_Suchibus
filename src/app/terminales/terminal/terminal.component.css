@@ -1,0 +1,168 @@
+.terminales{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Jost", sans-serif;
+}
+
+.terminal-container{
+    display: flex;
+    gap: 3vw;
+    justify-content: center;
+    padding: 4vw;
+    width: 1200px;
+    height:auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 1px;
+    background-color: #ffffff;
+    border: rgb(217, 217, 217) 0.2px solid;
+}
+
+h1{
+    margin-left: 180px;
+    font-family: "Jost", sans-serif;
+  }
+
+  .form-fields {
+    flex: 1;
+    height: 400px;
+    width: 580px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .input-group input {
+    flex: 1;
+    width: 260px;
+    height: 25px;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.219);
+    font-family:"Jost", sans-serif;
+    font-size: 18px;
+  }
+
+  .map-container {
+    flex: 1;
+    font-family:"Jost", sans-serif;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    width: 500px;
+    height:420px;
+    box-shadow:  0px 2px 4px rgba(0, 0, 0, 0.275);
+  }
+
+  
+  .map-container h3 {
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+    border: none;
+    margin: none;
+    padding: 0;
+  }
+  
+  .map-container p {
+    font-size: 17px;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .map-container img {
+    width: 100%;
+    height:310px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .buttons{
+    display: flex;
+    gap: 40px;
+  }
+
+  .buttons button{
+    border: 0;
+    margin: 0;
+    width: 180px;
+    height: 50px;
+  }
+  .edit{
+    background-color: #3262A3;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .delete{
+    background-color: #a33232;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .carlist{
+    background-color: #3262A3;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    align-items: center;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 2rem;
+    width: 600px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Jost", sans-serif;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .modal-buttons button {
+    padding: 0.5rem 1rem;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 180px;
+    height: 50px;
+    border-radius: 10px;
+  }
+  
+  .modal-buttons button:first-child {
+    background-color: #3262a3;
+    color: #fff;
+  }
+  
+  .modal-buttons button:last-child {
+    background-color: #a33232;
+    color: #fff;
+  }
+  
