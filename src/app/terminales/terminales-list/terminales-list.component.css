@@ -1,0 +1,93 @@
+
+.terminales-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6vw;
+    justify-content: flex-start;
+    padding: 4vw;
+    width: 1200px;
+    height: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 1px;
+    background-color: #ffffff;
+    border: rgb(217, 217, 217) 0.2px solid;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 328px;
+    height: 170px;
+    border-radius: 10px;
+    color: black;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: aquamarine;
+    border: rgba(63, 63, 63, 0.189) 0.2px solid;
+    cursor: pointer;
+  }
+
+  .card:hover{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.584);
+  }
+  .card-icon {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .card-name {
+    font-size: 30px;
+    margin-top: 0.2rem;
+    font-family: "Jost", sans-serif;
+  }
+  
+  .action-button {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Jost", sans-serif;
+    font-size: 24px;
+    height: 60px;
+    width: 328px;
+    justify-content: space-between;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: rgb(217, 217, 217) 0.2px solid;
+  }
+  
+  .action-button i {
+    margin-left: 0.5rem;
+    font-size: 34px;
+  }
+  .action-button a{
+    text-decoration: none;
+    color: black;
+  }
+
+  .action-button:hover{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.584);
+  }
+
+  .action-buttons{
+    display: flex;
+    flex-direction: column;
+    width: 328px;
+    height: 170px;
+    gap: 3vw;
+    margin: none;
+  }
+  
+  h1{
+    margin-left: 180px;
+    font-family: "Jost", sans-serif;
+  }
