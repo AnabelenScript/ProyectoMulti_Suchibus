@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { AgregarterminalComponent } from './agregarterminal/agregarterminal.component';
 import { MiTerminalComponent } from './mi-terminal/mi-terminal.component';
 import { TerminalComponent } from './terminal/terminal.component';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -25,7 +26,8 @@ import { TerminalComponent } from './terminal/terminal.component';
     CommonModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterLink
   ],
   exports:[
    TerminalesListComponent,
