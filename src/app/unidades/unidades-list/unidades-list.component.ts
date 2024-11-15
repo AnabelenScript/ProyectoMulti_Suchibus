@@ -53,7 +53,7 @@ export class UnidadesListComponent implements OnInit {
         },
         (error) => {
           console.error('Error al cargar las unidades:', error);
-          this.mensaje = 'Error al cargar las unidades. Inténtalo de nuevo más tarde.';
+          this.mensaje = 'No hay unidades para esta terminal';
         }
       );
     } else {
