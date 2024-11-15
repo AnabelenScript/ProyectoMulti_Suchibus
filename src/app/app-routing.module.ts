@@ -10,7 +10,7 @@ const routes: Routes = [
   {path:'agregarTerminal',component:AgregarterminalComponent},
   { path: 'terminal/:id', component: TerminalComponent },
   { path: '', redirectTo: '/terminales', pathMatch: 'full' },
-  { path: 'unidadeslist', component:UnidadesListComponent }
+  { path: 'unidadeslist/:terminalId', component:UnidadesListComponent }
 ];
 
 @NgModule({

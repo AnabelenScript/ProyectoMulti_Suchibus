@@ -1,8 +1,54 @@
-<h1>Mis unidades</h1>
+<h1>Mis Unidades</h1>
+
 <div class="unidades">
-<div class="unidades-horario">
+  <div class="unidades-horario">
     <h2>Horario</h2>
+  </div>
+  <div class="unidades-container">
+    <h2>Unidades de la Terminal</h2>
+    <div *ngFor="let unidad of unidades" class="card" (click)="verUnidadDetalle(unidad.id)">
+      <img src="assets/default-bus.png" alt="Unidad Image" />
+      <h3>Unidad {{ unidad.numPlaca }}</h3>
+    </div>
+  </div>
+  <div *ngIf="mensaje" class="mensaje">
+    <p>{{ mensaje }}</p>
+  </div>
 </div>
-<div class="unidades-container">
-    <h2>Unidades de la terminal</h2>
-</div></div>
+
+<button (click)="abrirModal()">Agregar Unidad</button>
+
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <h2>Agregar Nueva Unidad</h2>
+    <form (ngSubmit)="agregarUnidad()" #unidadForm="ngForm">
+      <div>
+        <label for="numPlaca">Número de Placa:</label>
+        <input type="text" id="numPlaca" name="numPlaca" [(ngModel)]="unidad.numPlaca" required>
+      </div>
+      <div>
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" name="modelo" [(ngModel)]="unidad.modelo" required>
+      </div>
+      <div>
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" name="marca" [(ngModel)]="unidad.marca" required>
+      </div>
+      <div>
+        <label for="fechaCompra">Fecha de Compra:</label>
+        <input type="date" id="fechaCompra" name="fechaCompra" [(ngModel)]="unidad.fecha_compra" required>
+      </div>
+      <div>
+        <label for="status">Estado de la Unidad:</label>
+        <select id="status" name="status" [(ngModel)]="unidad.status" required>
+          <option value="Lleno">Lleno</option>
+          <option value="inactivo">Inactivo</option>
+          <option value="mantenimiento">Mantenimiento</option>
+        </select>
+      </div>
+      <button type="submit" [disabled]="!unidadForm.form.valid">Agregar Unidad</button>
+    </form>
+    <button (click)="cerrarModal()">Cerrar</button>
+  </div>
+</div>
+
