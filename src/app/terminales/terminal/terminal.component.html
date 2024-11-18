@@ -19,7 +19,7 @@
         <input type="text" placeholder="Horario de cierre" [(ngModel)]="terminal.horarioCierre"  disabled="true"/>
       </div>
       <div class="buttons">
-        <button type="button" class="carlist">Ver unidades</button>
+        <button type="button" class="carlist" [routerLink]="['/unidadeslist', terminal.id]">Ver unidades</button>
         <button type="button" class="edit" (click)="abrirModal()">Editar</button>
         <button type="button" class="delete" (click)="eliminarTerminal()">Eliminar</button>
       </div>

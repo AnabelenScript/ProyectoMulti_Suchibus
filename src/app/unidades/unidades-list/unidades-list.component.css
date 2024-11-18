@@ -1,0 +1,109 @@
+
+.unidades-horario{
+    display: flex;
+    justify-content: center;
+    padding: 2.5vw 2.5vw 2.5vw 2.5vw;
+    width: 310px;
+    height: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 1px;
+    background-color: #ffffff;
+    border: rgb(217, 217, 217) 0.2px solid;
+    font-family: "Jost", sans-serif;
+}
+
+.unidades{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 43px;
+}
+.container{
+  flex-direction: column ;
+  width: 810px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 1px;
+  background-color: rgb(255, 255, 255);
+  border: rgb(217, 217, 217) 0.2px solid;
+  height: auto;
+  padding: 2.5vw 2.5vw 2.5vw 2.5vw;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  gap: 40px;
+  font-family: "Jost", sans-serif;
+}
+.unidades-container{
+    width:90%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    font-family: "Jost", sans-serif;
+    gap: 65px;
+}
+
+h1{
+    margin-left: 180px;
+    font-family: "Jost", sans-serif;
+}
+h2{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.card {
+    width: 300px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+  }
+
+  .buttons{
+    width: 80%;
+    align-items: center;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+    padding: 15px;
+    gap: 40px;
+  }
+
+  button{
+    padding: 0.5rem 0.5rem;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 180px;
+    height: 50px;
+    border-radius: 10px;
+  }

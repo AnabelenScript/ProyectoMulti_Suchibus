@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { TerminalesModule } from './terminales/terminales.module';
+import { UnidadesModule } from './unidades/unidades.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { TerminalesModule } from './terminales/terminales.module';
     BrowserModule,
     AppRoutingModule,
     NavbarComponent,
-    TerminalesModule
+    TerminalesModule,
+    UnidadesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
