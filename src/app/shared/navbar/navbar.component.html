@@ -1,6 +1,27 @@
 <div class="navbar">
-    <i class='bx bx-arrow-back' style='color:#ffffff' ></i>
-    <p><img src="assets/logo.png" alt="" class="logo"></p>
-    <div class="nav-links"><i class='bx bxs-user-circle' style='color:#ffffff'  ></i>
-    <i class='bx bx-menu' style='color:#ffffff'  ></i></div>
+  <i class='bx bx-arrow-back icon' (click)="goBack()"></i>
+  <p><img src="assets/logo.png" alt="Logo" class="logo"></p>
+  <div class="nav-links">
+    <i class='bx bxs-user-circle icon' (click)="verDetallesUsuario()"></i>
+    <i class='bx bx-menu icon'></i>
+  </div>
+</div>
+
+
+<div *ngIf="showModal" class="modal-backdrop">
+  <div class="modal">
+    <h2>Detalles del Usuario</h2>
+    <div class="input-modal">
+      <label for="nombre">Nombre de Usuario:</label>
+      <input id="nombre" type="text" [(ngModel)]="selectUser.nombre" />
+    </div>
+    <div class="input-modal">
+      <label for="email">Correo Electrónico:</label>
+      <input id="email" type="email" [(ngModel)]="selectUser.email" />
+    </div>
+    <div class="button-group">
+      <button (click)="actualizarUsuario()">Guardar Cambios</button>
+      <button (click)="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
 </div>

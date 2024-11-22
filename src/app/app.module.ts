@@ -5,19 +5,23 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { TerminalesModule } from './terminales/terminales.module';
 import { UnidadesModule } from './unidades/unidades.module';
+import { LoginModule } from './login/login.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NavbarComponent,
     TerminalesModule,
-    UnidadesModule
+    UnidadesModule,
+    LoginModule,
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

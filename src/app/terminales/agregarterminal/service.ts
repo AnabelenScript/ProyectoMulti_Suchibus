@@ -14,4 +14,12 @@ export class TerminalService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.apiUrl, data, { headers });
   }
+
+  private apiUrl2 = 'http://127.0.0.1:5000/colonias'; // URL de la API
+
+
+  obtenerColoniasPorCp(cp: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl2}?cp=${cp}`);
+  }
+
 }

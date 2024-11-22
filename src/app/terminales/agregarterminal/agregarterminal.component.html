@@ -7,15 +7,22 @@
         <input type="text" placeholder="Num Exterior" [(ngModel)]="terminalData.num">
       </div>
       <div class="input-group">
+        <input type="text" placeholder="Codigo Postal" [(ngModel)]="terminalData.cp" (blur)="obtenerColoniasPorCP()">
+        <input type="text" placeholder="Estado" [(ngModel)]="terminalData.estado">
+      </div>
+      <div class="input-group">
         <input type="text" placeholder="Calle" [(ngModel)]="terminalData.calle">
         <input type="text" placeholder="Teléfono" [(ngModel)]="terminalData.telefono">
       </div>
       <div class="input-group">
-        <input type="text" placeholder="Colonia" [(ngModel)]="terminalData.colonia">
+        <!-- Mostrar colonias en un select si hay colonias disponibles -->
+        <select [(ngModel)]="terminalData.colonia" *ngIf="colonias.length > 0">
+          <option *ngFor="let colonia of colonias" [value]="colonia">{{ colonia }}</option>
+        </select>
         <input type="text" placeholder="Horario de apertura" [(ngModel)]="terminalData.horarioApertura">
       </div>
       <div class="input-group">
-        <input type="text" placeholder="Municipio" [(ngModel)]="terminalData.ciudad">
+        <input type="text" placeholder="Municipio" [(ngModel)]="terminalData.municipio">
         <input type="text" placeholder="Horario de cierre" [(ngModel)]="terminalData.horarioCierre">
       </div>
       <button class="add-button" (click)="agregarTerminal()">Agregar</button>

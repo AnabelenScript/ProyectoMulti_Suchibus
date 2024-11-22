@@ -12,6 +12,7 @@ export class TerminalComponent implements OnInit {
   terminal: any = {};
   modalVisible: boolean = false;
   terminalId: number | null = null; 
+  router: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +25,8 @@ export class TerminalComponent implements OnInit {
       this.terminalId = +id;
       this.terminalService.obtenerTerminalPorId(this.terminalId).subscribe(
         (data) => {
-          this.terminal = data;
+          this.terminal = data ;
+          console.log(this.terminal);
         },
         (error) => {
           console.error('Error al obtener terminal:', error);
@@ -71,9 +73,8 @@ export class TerminalComponent implements OnInit {
             Swal.fire(
               'Eliminada',
               'La terminal ha sido eliminada.',
-              'success'
+              'success',
             );
-            // Aquí podrías redirigir al usuario a otra página
           },
           (error) => {
             console.error('Error al eliminar terminal:', error);

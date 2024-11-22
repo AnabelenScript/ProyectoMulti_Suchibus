@@ -2,20 +2,24 @@
 <div class="terminales">
   <div class="terminal-container">
     <div class="form-fields">
-      <div class="input-group">
+      <div class="input-group" *ngIf="terminal && terminal.direccion">
         <input type="text" placeholder="Nombre" [(ngModel)]="terminal.nombre" disabled="true"/>
         <input type="text" placeholder="Num Exterior" [(ngModel)]="terminal.direccion.num" disabled="true"/>
       </div>
-      <div class="input-group">
+      <div class="input-group" *ngIf="terminal?.direccion">
+        <input type="text" placeholder="Codigo postal" [(ngModel)]="terminal.direccion.cp" disabled="true" />
+        <input type="text" placeholder="Estado" [(ngModel)]="terminal.direccion.estado" disabled="true" />
+      </div>
+      <div class="input-group" *ngIf="terminal && terminal.direccion">
         <input type="text" placeholder="Calle" [(ngModel)]="terminal.direccion.calle" disabled="true"/>
         <input type="text" placeholder="Teléfono" [(ngModel)]="terminal.telefono" disabled="true"/>
       </div>
-      <div class="input-group">
+      <div class="input-group" *ngIf="terminal && terminal.direccion">
         <input type="text" placeholder="Colonia" [(ngModel)]="terminal.direccion.colonia" disabled="true"/>
         <input type="text" placeholder="Horario de apertura" [(ngModel)]="terminal.horarioApertura" disabled="true" />
       </div>
-      <div class="input-group">
-        <input type="text" placeholder="Municipio" [(ngModel)]="terminal.direccion.ciudad" disabled="true" />
+      <div class="input-group" *ngIf="terminal && terminal.direccion">
+        <input type="text" placeholder="Municipio" [(ngModel)]="terminal.direccion.municipio" disabled="true" />
         <input type="text" placeholder="Horario de cierre" [(ngModel)]="terminal.horarioCierre"  disabled="true"/>
       </div>
       <div class="buttons">
@@ -35,20 +39,24 @@
 <div class="modal" *ngIf="modalVisible">
   <div class="modal-content">
     <h2>Editar Terminal</h2>
-    <div class="input-group">
+    <div class="input-group" *ngIf="terminal && terminal.direccion">
       <input type="text" placeholder="Nombre" [(ngModel)]="terminal.nombre" />
       <input type="text" placeholder="Num Exterior" [(ngModel)]="terminal.direccion.num" />
     </div>
-    <div class="input-group">
+    <div class="input-group" *ngIf="terminal?.direccion">
+      <input type="text" placeholder="Codigo Postal"[(ngModel)]="terminal.direccion.cp"/>
+      <input type="text" placeholder="Estado"[(ngModel)]="terminal.direccion.estado">
+    </div>
+    <div class="input-group" *ngIf="terminal && terminal.direccion">
       <input type="text" placeholder="Calle" [(ngModel)]="terminal.direccion.calle" />
       <input type="text" placeholder="Teléfono" [(ngModel)]="terminal.telefono" />
     </div>
-    <div class="input-group">
+    <div class="input-group" *ngIf="terminal && terminal.direccion">
       <input type="text" placeholder="Colonia" [(ngModel)]="terminal.direccion.colonia" />
       <input type="text" placeholder="Horario de apertura" [(ngModel)]="terminal.horarioApertura" />
     </div>
-    <div class="input-group">
-      <input type="text" placeholder="Municipio" [(ngModel)]="terminal.direccion.ciudad" />
+    <div class="input-group" *ngIf="terminal && terminal.direccion">
+      <input type="text" placeholder="Municipio" [(ngModel)]="terminal.direccion.municipio" />
       <input type="text" placeholder="Horario de cierre" [(ngModel)]="terminal.horarioCierre" />
     </div>
     <div class="modal-buttons">
