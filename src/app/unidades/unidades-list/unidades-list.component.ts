@@ -13,6 +13,7 @@ export class UnidadesListComponent implements OnInit {
   unidades: Unidad[] = [];
   selectedUnidad: Unidad | null = null;
   showModal: boolean = false;
+  showModalEditar:boolean = false
   terminalId: number | null = null;
   mensaje: string | null = null;
 
@@ -65,8 +66,13 @@ export class UnidadesListComponent implements OnInit {
     this.showModal = true;
   }
 
+  abrirModalEditar(): void {
+    this.showModalEditar = true;
+  }
+
   cerrarModal(): void {
     this.showModal = false;
+    this.showModalEditar = false
     this.unidad = {
       id: 0,
       numPlaca: '',
@@ -80,7 +86,10 @@ export class UnidadesListComponent implements OnInit {
   verUnidadDetalle(id: number): void {
     this.unidadService.obtenerUnidad(id).subscribe((data: Unidad) => {
       this.selectedUnidad = data;
-      this.showModal = true;
+      this.unidad = this.selectedUnidad
+      console.log('eto es:', this.selectedUnidad);
+      
+      this.showModalEditar = true;
     });
   }
 
@@ -112,4 +121,59 @@ export class UnidadesListComponent implements OnInit {
       );
     }
   }
+  editarUnidad(): void {
+    if (this.selectedUnidad) { 
+      this.unidadService.actualizarUnidad(this.selectedUnidad.id, this.unidad).subscribe(
+        (response) => {
+          Swal.fire({
+            title: 'Éxito',
+            text: 'Unidad editada correctamente.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+          }).then(() => {
+            this.cargarUnidades();  
+            this.cerrarModal(); 
+          });
+        },
+        (error: any) => { 
+          console.error('Error al editar la unidad:', error);
+          Swal.fire({
+            title: 'Error',
+            text: 'No se pudo editar la unidad. Intenta de nuevo más tarde.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+          });
+        }
+      );
+    }
+  }
+  
+  eliminarUnidad(): void {
+    if (this.selectedUnidad) { 
+      this.unidadService.eliminarUnidad(this.selectedUnidad.id).subscribe(
+        (response) => {
+          Swal.fire({
+            title: 'Éxito',
+            text: 'Unidad eliminada correctamente.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+          }).then(() => {
+            this.cargarUnidades();  
+            this.cerrarModal(); 
+          });
+        },
+        (error: any) => { // Especifica el tipo de error
+          console.error('Error al eliminar la unidad:', error);
+          Swal.fire({
+            title: 'Error',
+            text: 'No se pudo eliminar la unidad. Intenta de nuevo más tarde.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+          });
+        }
+      );
+    }
+  }
+  
+  
 }

@@ -4,50 +4,210 @@
     <h2>Horario</h2>
   </div>
   <div class="container">
-    <h2>Unidades de la Terminal</h2><div class="unidades-container">
-    <div *ngFor="let unidad of unidades" class="card" (click)="verUnidadDetalle(unidad.id)">
-      <img src="assets/carro1.png" alt="Unidad Image" />
-      <h3>Unidad {{ unidad.numPlaca }}</h3>
-    </div><div *ngIf="mensaje" class="mensaje">
-    <p>{{ mensaje }}</p>
+    <h2>Unidades de la Terminal</h2>
+    <div class="unidades-container">
+      <div
+        *ngFor="let unidad of unidades"
+        class="card"
+        (click)="verUnidadDetalle(unidad.id)"
+      >
+        <img src="assets/carro1.png" alt="Unidad Image" />
+        <h3>Unidad {{ unidad.numPlaca }}</h3>
+      </div>
+      <div *ngIf="mensaje" class="mensaje">
+        <p>{{ mensaje }}</p>
+      </div>
+    </div>
+    <div class="buttons">
+      <button (click)="abrirModal()">Agregar Unidad</button>
+      <button>Lista de choferes</button>
+    </div>
   </div>
-  </div>
-  <div class="buttons">
-  <button (click)="abrirModal()">Agregar Unidad</button>
-  <button>Lista de choferes</button></div>
-</div></div>
-
+</div>
 <div class="modal" *ngIf="showModal">
   <div class="modal-content">
     <h2>Agregar Nueva Unidad</h2>
     <form (ngSubmit)="agregarUnidad()" #unidadForm="ngForm">
-      <div>
-        <label for="numPlaca">Número de Placa:</label>
-        <input type="text" id="numPlaca" name="numPlaca" [(ngModel)]="unidad.numPlaca" required>
+      <div class="part1">
+        <div>
+          <label for="Folio">Folio:</label>
+          <input type="text" id="folio" name="folio" required />
+        </div>
+        <div>
+          <label for="numPlaca">Número de Placa:</label>
+          <input
+            type="text"
+            id="numPlaca"
+            name="numPlaca"
+            [(ngModel)]="unidad.numPlaca"
+            required
+          />
+        </div>
+        <div>
+          <label for="modelo">Modelo:</label>
+          <input
+            type="text"
+            id="modelo"
+            name="modelo"
+            [(ngModel)]="unidad.modelo"
+            required
+          />
+        </div>
+        <div>
+          <label for="marca">Marca:</label>
+          <input
+            type="text"
+            id="marca"
+            name="marca"
+            [(ngModel)]="unidad.marca"
+            required
+          />
+        </div>
       </div>
-      <div>
-        <label for="modelo">Modelo:</label>
-        <input type="text" id="modelo" name="modelo" [(ngModel)]="unidad.modelo" required>
+      <div class="part2">
+        <div>
+          <label for="fechaCompra">Fecha de Compra:</label>
+          <input
+            type="date"
+            id="fechaCompra"
+            name="fechaCompra"
+            [(ngModel)]="unidad.fecha_compra"
+            required
+          />
+        </div>
+        <div>
+          <div>
+            <label for="status">Estado de la Unidad:</label>
+            <select
+              id="status"
+              name="status"
+              [(ngModel)]="unidad.status"
+              required
+            >
+              <option value="Lleno">Lleno</option>
+              <option value="inactivo">Inactivo</option>
+              <option value="mantenimiento">Mantenimiento</option>
+            </select>
+          </div>
+        </div>
+        <div class="add">
+          <button class="noselect">
+            <span class="text">Agregar imagen</span
+            ><span class="icon"
+              ><svg
+                viewBox="0 0 24 24"
+                height="24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"></svg><span class="buttonSpan">+</span></span>
+          </button>
+        </div>
+        <div class="buttons2">
+          <button
+            type="submit"
+            [disabled]="!unidadForm.form.valid"
+            class="addingbutton"
+          >
+            Agregar Unidad
+          </button>
+          <button (click)="cerrarModal()" class="cancelbutton">Cancelar</button>
+        </div>
       </div>
-      <div>
-        <label for="marca">Marca:</label>
-        <input type="text" id="marca" name="marca" [(ngModel)]="unidad.marca" required>
-      </div>
-      <div>
-        <label for="fechaCompra">Fecha de Compra:</label>
-        <input type="date" id="fechaCompra" name="fechaCompra" [(ngModel)]="unidad.fecha_compra" required>
-      </div>
-      <div>
-        <label for="status">Estado de la Unidad:</label>
-        <select id="status" name="status" [(ngModel)]="unidad.status" required>
-          <option value="Lleno">Lleno</option>
-          <option value="inactivo">Inactivo</option>
-          <option value="mantenimiento">Mantenimiento</option>
-        </select>
-      </div>
-      <button type="submit" [disabled]="!unidadForm.form.valid">Agregar Unidad</button>
     </form>
-    <button (click)="cerrarModal()">Cerrar</button>
   </div>
 </div>
 
+<div class="modal" *ngIf="showModalEditar">
+  <div class="modal-content">
+    <h2>Editar Unidad</h2>
+    <form (ngSubmit)="editarUnidad()" #unidadForm="ngForm">
+      <div class="part1">
+        <div>
+          <label for="Folio">Folio:</label>
+          <input type="text" id="folio" [value]="selectedUnidad?.id" name="folio" disabled />
+        </div>
+        <div>
+          <label for="numPlaca">Número de Placa:</label>
+          <input
+            [value]="selectedUnidad?.numPlaca"
+            type="text"
+            id="numPlaca"
+            name="numPlaca"
+            [(ngModel)]="unidad.numPlaca"
+            required
+          />
+        </div>
+        <div>
+          <label for="modelo">Modelo:</label>
+          <input
+            [value]="selectedUnidad?.modelo"
+            type="text"
+            id="modelo"
+            name="modelo"
+            [(ngModel)]="unidad.modelo"
+            required
+          />
+        </div>
+        <div>
+          <label for="marca">Marca:</label>
+          <input
+            [value]="selectedUnidad?.marca"
+            type="text"
+            id="marca"
+            name="marca"
+            [(ngModel)]="unidad.marca"
+            required
+          />
+        </div>
+      </div>
+      <div class="part2">
+        <div>
+          <label for="fechaCompra">Fecha de Compra:</label>
+          <input
+            [value]="selectedUnidad?.fecha_compra"
+            type="date"
+            id="fechaCompra"
+            name="fechaCompra"
+            [(ngModel)]="unidad.fecha_compra"
+            required
+          />
+        </div>
+        <div>
+          <div>
+            <label for="status">Estado de la Unidad:</label>
+            <select
+              [value]="selectedUnidad?.status"
+              id="status"
+              name="status"
+              [(ngModel)]="unidad.status"
+              required
+            >
+              <option value="activo">Activo</option>
+              <option value="inactivo">Inactivo</option>
+              <option value="mantenimiento">Mantenimiento</option>
+            </select>
+          </div>
+        </div>
+        <div class="photocontainer">
+          <div class="add2">
+            <button class="noselecto" type="button">
+              <span class="text">Editar imagen</span>
+            </button>
+          </div>
+          <div class="imgcontainer"></div>
+        </div>
+      </div>
+    </form>
+    <div class="buttons3">
+      <button (click)="editarUnidad()"
+        type="submit"
+        [disabled]="!unidadForm.form.valid"
+        class="addingbutton"
+      >
+        Guardar cambios
+      </button>
+      
+      <button (click)="eliminarUnidad()" class="deletebutton">Eliminar</button>
+      <button (click)="cerrarModal()" class="cancelbutton2">Cerrar</button>
+    </div>
+  </div>
+</div>
