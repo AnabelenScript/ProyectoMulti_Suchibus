@@ -24,6 +24,7 @@ export class UnidadesListComponent implements OnInit {
     marca: '',
     fecha_compra: '',
     terminal_id: 0,
+    imagen_url: '',
     status: 'activo'  
   };
 
@@ -79,6 +80,7 @@ export class UnidadesListComponent implements OnInit {
       modelo: '',
       marca: '',
       fecha_compra: '',
+      imagen_url: '',
       terminal_id: this.terminalId || 0,
       status: 'activo' 
     };
