@@ -35,7 +35,7 @@
   font-family: "Jost", sans-serif;
 }
 .unidades-container {
-  width: 90%;
+  width: 92%;
   height: 350px; 
   display: flex;
   flex-wrap: wrap; 
@@ -72,7 +72,8 @@ h2{
   
   .card img {
     width: 100%;
-    height: auto;
+    height: 200px;
+    
   }
   
   .modal {
@@ -301,7 +302,6 @@ h2{
   height: 16.1vh;
   display: flex;
   box-shadow: 3px 3px 3px rgba(1.5, 0, 0, 0.15);
-  border-radius: 15px;
 }
 
 .add2 button{
@@ -315,13 +315,6 @@ h2{
   font-size: 1rem;
 }
 
-.imgcontainer{
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-}
  
 .buttons3{
   width: 100%;
@@ -349,4 +342,8 @@ h2{
 .deletebutton{
   background-color: #a33232;
   color: white;
+}
+.imagen-unidad{
+  width: 225px;
+  height: 132.2px;
 }
