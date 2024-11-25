@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TerminalService } from './service';
-
+import { TipoUsuario } from '../../users/choferes/agg-chofer/agg-chofer.component';
 interface Terminal {
   id: number;
   nombre: string;
@@ -17,6 +17,7 @@ interface Terminal {
   styleUrls: ['./terminales-list.component.css']
 })
 export class TerminalesListComponent implements OnInit {
+  TipoUsuario = TipoUsuario;
   terminales: Terminal[] = [];
 
   constructor(private terminalService: TerminalService, private router: Router) {}

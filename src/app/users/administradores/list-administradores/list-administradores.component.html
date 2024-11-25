@@ -1,0 +1,71 @@
+<div class="terminales-container">
+    <h1>Choferes</h1>
+    <div class="container">
+        <div class="action-buttons">
+            <button class="action-button" (click)="registrarAdministrador()">
+              Registrar Chofer<i class='bx bx-user-plus'></i>
+            </button>
+          </div>      
+    <div 
+        *ngFor="let Administrador of administradores" 
+        class="card" 
+        (click)="Administrador.id ? mostrarDetallesAdministrador(Administrador.id) : null">
+        <div class="card-icon">
+            <i class='bx bxs-user' ></i>
+          <img *ngIf="Administrador.imagen_url" [src]="Administrador.imagen_url" alt="{{ Administrador.nombre }}" />
+        </div>
+        <div class="card-name">{{ Administrador.nombre }}</div>
+        <div class="card-email">{{ Administrador.email }}</div>
+      </div>
+    </div>
+
+
+    <div *ngIf="administradorSeleccionado" class="modal">
+      <div class="modal-content">
+        <span class="close" (click)="cerrarModal()">&times;</span>
+        <h1>Detalles del Chofer</h1>
+        <form class="form-fields">
+          <div class="input-group">
+            <input type="text" [value]="administradorSeleccionado.nombre" placeholder="Nombre" />
+            <input type="text" [value]="administradorSeleccionado.lastname" placeholder="Apellido" />
+          </div>
+    
+          <div class="input-group">
+            <input type="email" [value]="administradorSeleccionado.email" placeholder="Email" />
+            <input type="text" [value]="administradorSeleccionado.username" placeholder="Nombre de Usuario" />
+          </div>
+    
+          <div class="input-group">
+            <input type="text" [value]="administradorSeleccionado.telefono" placeholder="Teléfono" />
+          </div>
+    
+          <div class="input-group">
+            <input type="number" [value]="administradorSeleccionado.edad" placeholder="Edad" />
+            <input type="text" [value]="administradorSeleccionado.experienciaLaboral" placeholder="Experiencia Laboral">
+            <input type="text" [value]="administradorSeleccionado.status" placeholder="Status">
+          </div>
+    
+          <div *ngIf="administradorSeleccionado.direccion">
+            <h3>Dirección</h3>
+            <div class="input-group">
+              <input type="text" [value]="administradorSeleccionado.direccion.calle" placeholder="Calle" />
+              <input type="text" [value]="administradorSeleccionado.direccion.ciudad" placeholder="Ciudad" />
+            </div>
+            <div class="input-group">
+              <input type="text" [value]="administradorSeleccionado.direccion.estado" placeholder="Estado" />
+              <input type="text" [value]="administradorSeleccionado.direccion.codigoPostal" placeholder="Código Postal" />
+            </div>
+          </div>
+        </form>
+    
+        <div class="modal-buttons">
+          <button class="edit">Guardar</button>
+          <button class="delete" (click)="cerrarModal()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+    
+  
+  
+</div>
+  

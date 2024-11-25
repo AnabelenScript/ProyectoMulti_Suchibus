@@ -8,6 +8,7 @@ import { UnidadesModule } from './unidades/unidades.module';
 import { LoginModule } from './login/login.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { UsersModule } from './users/users.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     NavbarComponent,
     TerminalesModule,
     UnidadesModule,
+    UsersModule,
     LoginModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, ],

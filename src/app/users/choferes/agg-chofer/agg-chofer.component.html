@@ -1,0 +1,61 @@
+<div class="register-container">
+  <h1>Registro de Chofer</h1>
+  <div class="form-container">
+    <div class="photo-container">
+      <img [src]="imagePreview || 'https://via.placeholder.com/150'" alt="Foto de usuario" class="user-photo">
+      <input type="file" #fileInput (change)="onFileSelected($event)" hidden>
+      <button class="upload-button" (click)="fileInput.click()">Subir Foto</button>
+    </div>
+    
+
+    <div class="form-fields">
+      <div class="section">
+        <h2>Datos personales</h2>
+        <div class="section-content">
+          <div class="input-group">
+            <input type="text" placeholder="Nombre" [(ngModel)]="choferData.nombre" required>
+            <input type="text" placeholder="Apellido" [(ngModel)]="choferData.lastname" required>
+          </div>
+          <div class="input-group">
+            <input type="text" placeholder="Correo" [(ngModel)]="choferData.email" required>
+            <input type="number" placeholder="Edad" [(ngModel)]="choferData.edad" required>
+          </div>
+          <div class="input-group">
+            <input type="text" placeholder="Experiencia Laboral" [(ngModel)]="choferData.experienciaLaboral">
+            <input type="text" placeholder="Teléfono" [(ngModel)]="choferData.telefono">
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Dirección</h2>
+        <div class="section-content">
+          <div class="input-group" *ngIf="choferData.direccion">
+            <input type="text" placeholder="Código Postal" [(ngModel)]="choferData.direccion.codigoPostal">
+            <input type="text" placeholder="Calle" [(ngModel)]="choferData.direccion.calle">
+          </div>
+          <div class="input-group" *ngIf="choferData.direccion">
+            <input type="text" placeholder="Estado" [(ngModel)]="choferData.direccion.estado">
+            <input type="text" placeholder="Ciudad" [(ngModel)]="choferData.direccion.ciudad">
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Datos de usuario</h2>
+        <div class="section-content">
+          <div class="input-group">
+            <input type="text" placeholder="Nombre de usuario" [(ngModel)]="choferData.username" required>
+            <input type="password" placeholder="Contraseña" [(ngModel)]="choferData.password" required>
+          </div>
+          <div class="input-group">
+            <input type="text" placeholder="Número de Licencia" [(ngModel)]="choferData.licencia" required>
+            <input type="text" placeholder="Status" [(ngModel)]="choferData.status" required>
+          </div>
+        </div>
+      </div>
+
+      <button class="register-button" (click)="registrarChofer()">Registrar</button>
+    </div>
+  </div>
+</div>

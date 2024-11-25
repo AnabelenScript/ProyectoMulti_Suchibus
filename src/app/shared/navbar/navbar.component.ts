@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms'; // Importa FormsModule
 import { UserService } from '../../users/service';
 import { User } from '../../users/userModel';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { AggChoferComponent } from '../../users/choferes/agg-chofer/agg-chofer.component';
 
 @Component({
   selector: 'app-navbar',
@@ -18,12 +20,28 @@ import { Location } from '@angular/common';
 })
 export class NavbarComponent  {
   showModal: boolean = false;
+  menuOpen = false;
   selectUser: User = { id: 0, nombre: '', email: '', password: '' };
 
-  constructor(private userService: UserService,private location: Location) {}
+  constructor(private userService: UserService,private location: Location, private router: Router) {}
 
   goBack(): void {
     this.location.back();
+  }
+
+  toggleMenu() {
+   this.menuOpen = !this.menuOpen;
+  }
+
+  mostrarChoferes(): void{
+    this.router.navigate(['/mostrarChoferes']);
+  }
+  mostrarAdministradores(): void{
+    this.router.navigate(['/mostrarAdministradores'])
+  }
+
+  inicio(): void{
+    this.router.navigate(['/terminales'])
   }
 
   verDetallesUsuario(): void {

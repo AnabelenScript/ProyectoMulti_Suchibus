@@ -1,0 +1,72 @@
+<div class="terminales-container">
+    <h1>Choferes</h1>
+    <div class="container">
+        <div class="action-buttons">
+            <button class="action-button" (click)="registrarChofer()">
+              Registrar Chofer<i class='bx bx-user-plus'></i>
+            </button>
+          </div>      
+    <div 
+        *ngFor="let chofer of choferes" 
+        class="card" 
+        (click)="chofer.id ? mostrarDetallesChofer(chofer.id) : null">
+        <div class="card-icon">
+            <i class='bx bxs-user' ></i>
+            <img *ngIf="chofer.imagen_url" [src]="chofer.imagen_url" alt="{{ chofer.nombre }}" />
+          </div>
+        <div class="card-name">{{ chofer.nombre }}</div>
+        <div class="card-email">{{ chofer.email }}</div>
+      </div>
+    </div>
+
+
+    <div *ngIf="choferSeleccionado" class="modal">
+      <div class="modal-content">
+        <span class="close" (click)="cerrarModal()">&times;</span>
+        <h1>Detalles del Chofer</h1>
+        <form class="form-fields">
+          <div class="input-group">
+            <input type="text" [value]="choferSeleccionado.nombre" placeholder="Nombre" />
+            <input type="text" [value]="choferSeleccionado.lastname" placeholder="Apellido" />
+          </div>
+    
+          <div class="input-group">
+            <input type="email" [value]="choferSeleccionado.email" placeholder="Email" />
+            <input type="text" [value]="choferSeleccionado.username" placeholder="Nombre de Usuario" />
+          </div>
+    
+          <div class="input-group">
+            <input type="text" [value]="choferSeleccionado.telefono" placeholder="Teléfono" />
+            <input type="text" [value]="choferSeleccionado.licencia" placeholder="Licencia" />
+          </div>
+    
+          <div class="input-group">
+            <input type="number" [value]="choferSeleccionado.edad" placeholder="Edad" />
+            <input type="text" [value]="choferSeleccionado.experienciaLaboral" placeholder="Experiencia Laboral">
+            <input type="text" [value]="choferSeleccionado.status" placeholder="Status">
+          </div>
+    
+          <div *ngIf="choferSeleccionado.direccion">
+            <h3>Dirección</h3>
+            <div class="input-group">
+              <input type="text" [value]="choferSeleccionado.direccion.calle" placeholder="Calle" />
+              <input type="text" [value]="choferSeleccionado.direccion.ciudad" placeholder="Ciudad" />
+            </div>
+            <div class="input-group">
+              <input type="text" [value]="choferSeleccionado.direccion.estado" placeholder="Estado" />
+              <input type="text" [value]="choferSeleccionado.direccion.codigoPostal" placeholder="Código Postal" />
+            </div>
+          </div>
+        </form>
+    
+        <div class="modal-buttons">
+          <button class="edit">Guardar</button>
+          <button class="delete" (click)="cerrarModal()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+    
+  
+  
+</div>
+  
