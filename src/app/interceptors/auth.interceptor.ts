@@ -10,8 +10,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('authToken');
-
-    // Añadir el token al encabezado si existe
     const clonedReq = token
       ? req.clone({ headers: req.headers.set('Authorization', `Bearer ${token}`) })
       : req;
@@ -19,7 +17,6 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(clonedReq).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          // Redirigir al login si el servidor responde con un 401
           this.router.navigate(['/']);
         }
         return throwError(() => error);
