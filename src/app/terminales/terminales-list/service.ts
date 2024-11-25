@@ -24,7 +24,7 @@ export class TerminalService {
     return this.http.get<Terminal[]>(this.apiUrl).pipe(
       map(terminales => terminales.map(terminal => ({
         ...terminal,
-        direccion: terminal.direccion ? JSON.parse(terminal.direccion) : null // Convertir direccion
+        direccion: terminal.direccion ? JSON.parse(terminal.direccion) : null
       })))
     );
   }
@@ -33,7 +33,7 @@ export class TerminalService {
     return this.http.get<Terminal>(`${this.apiUrl}/${id}`).pipe(
       map(terminal => ({
         ...terminal,
-        direccion: terminal.direccion ? JSON.parse(terminal.direccion) : null // Convertir direccion
+        direccion: terminal.direccion ? JSON.parse(terminal.direccion) : null
       }))
     );
   }

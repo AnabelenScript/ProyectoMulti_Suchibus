@@ -29,8 +29,8 @@ export class AgregarterminalComponent {
 
 
   obtenerColoniasPorCP(): void {
-    const cp = this.terminalData.cp; // Tomar el CP del input
-    if (cp && cp.length === 5) { // Verificar si el CP tiene 5 dígitos
+    const cp = this.terminalData.cp;
+    if (cp && cp.length === 5) { 
       this.terminalService.obtenerColoniasPorCp(cp).subscribe({
         next: (response) => {
           console.log('Respuesta de colonias:', response);
@@ -46,7 +46,7 @@ export class AgregarterminalComponent {
         }
       });
     } else {
-      this.colonias = []; // Limpiar las colonias si el CP no es válido
+      this.colonias = [];
     }
   }
 

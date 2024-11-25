@@ -12,7 +12,7 @@ import { AggAdministradoresComponent } from './users/administradores/agg-adminis
 import { ListAdministradoresComponent } from './users/administradores/list-administradores/list-administradores.component';
 
 const routes: Routes = [
-  { path: '', component: IniciarSesionComponent }, // Página de inicio de sesión (sin protección)
+  { path: '', component: IniciarSesionComponent },
   { path: 'terminales', component: TerminalesListComponent, canActivate: [authGuard] },
   { path: 'agregarTerminal', component: AgregarterminalComponent, canActivate: [authGuard] },
   { path: 'terminal/:id', component: TerminalComponent, canActivate: [authGuard] },

@@ -15,8 +15,7 @@
         <input type="text" placeholder="Teléfono" [(ngModel)]="terminalData.telefono">
       </div>
       <div class="input-group">
-        <!-- Mostrar colonias en un select si hay colonias disponibles -->
-        <select [(ngModel)]="terminalData.colonia" *ngIf="colonias.length > 0">
+        <select [(ngModel)]="terminalData.colonia"  aria-placeholder="Colonias">
           <option *ngFor="let colonia of colonias" [value]="colonia">{{ colonia }}</option>
         </select>
         <input type="text" placeholder="Horario de apertura" [(ngModel)]="terminalData.horarioApertura">
