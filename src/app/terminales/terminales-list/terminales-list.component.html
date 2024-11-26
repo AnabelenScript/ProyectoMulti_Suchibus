@@ -2,14 +2,17 @@
 <div class="terminales-container">
   <div class="container">
     <div class="action-buttons">
-      <app-b-agg-terminal [showbutton]="true"></app-b-agg-terminal>
-      <button class="action-button">Mis terminales <i class="bx bx-book-content"></i></button>
+      <button *ngIf="showButton" class="action-button" routerLink="/agregarTerminal">Agregar <i class="bx bxs-plus-square"></i></button>
     </div>
     <div *ngFor="let terminal of terminales" class="card" (click)="verTerminal(terminal.id)">
       <div class="card-icon">
         <img src="assets/paradalogo.png" alt="Icono de parada" class="card-icon">
       </div>
       <div class="card-name">{{ terminal.nombre }}</div>
+      <button *ngIf="authService.getRole() === 'pasajero'" type="button" class="carlist" [routerLink]="['/unidadeslist', terminal.id]">
+        Ver unidades
+      </button>
     </div>
   </div>
 </div>
+

@@ -10,6 +10,7 @@ import { MiTerminalComponent } from './mi-terminal/mi-terminal.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { RouterLink } from '@angular/router';
 import { BAggTerminalComponent } from './terminales-list/botones/b-agg-terminal/b-agg-terminal.component';
+import { AuthService } from '../service';
 
 
 

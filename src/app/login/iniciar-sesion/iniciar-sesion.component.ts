@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../service';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -14,7 +15,7 @@ export class IniciarSesionComponent {
   isRegistering = false;
   mensaje: string | null = null;
   rol: string= '';
-  constructor(private fb: FormBuilder, private loginService: LoginService, private router:Router) {
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router:Router,private authService: AuthService) {
 
     this.loginForm = this.fb.group({
       nombre: ['', Validators.required],
@@ -35,11 +36,8 @@ export class IniciarSesionComponent {
         next: (response) => {
           this.mensaje = 'Inicio de sesión exitoso';
           console.log('Token:', response.token);
-          this.rol=response.role_enum
-          console.log(this.rol)
-  
+          this.authService.setRole(response.role_enum);
           localStorage.setItem('authToken', response.token);
-  
           this.router.navigate(['/terminales']);
         },
         error: (err) => {

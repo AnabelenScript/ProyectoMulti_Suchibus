@@ -32,4 +32,7 @@ export class ChoferService {
   actualizarChofer(chofer: Chofer): Observable<any> {
     return this.http.put(`${this.baseUrl}/users/${chofer.id}`, chofer);
   }
+  asignarUnidad(unidadId: number, choferId: number) {
+    return this.http.post(this.baseUrl, { unidad_id: unidadId, chofer_id: choferId });
+  }
 }

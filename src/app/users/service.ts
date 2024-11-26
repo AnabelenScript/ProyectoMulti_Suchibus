@@ -26,4 +26,5 @@ export class UserService {
   eliminarUsuario(id: number): Observable<any> {
     return this.http.delete(`${this.apiurl}/users/${id}`);
   }
+
 }

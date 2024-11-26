@@ -13,8 +13,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-choferes.component.css']
 })
 export class ListChoferesComponent implements OnInit {
-  choferes: Chofer[] = [];
-  choferSeleccionado?: Chofer;
+  choferes: any[] = [];
+  unidades: any[] = [];
+  choferSeleccionado: any = null;
+  unidadSeleccionada: any = null;
 
   constructor(private choferService: ChoferService, private router:Router) {}
 
@@ -51,7 +53,21 @@ export class ListChoferesComponent implements OnInit {
   registrarChofer(): void {
     this.router.navigate(['/registrarChofer']);
   }
-  
+  asignarUnidad() {
+    if (this.choferSeleccionado && this.unidadSeleccionada) {
+      this.choferService
+        .asignarUnidad(this.choferSeleccionado.id, this.unidadSeleccionada.id)
+        .subscribe(
+          (response) => {
+            alert('Unidad asignada correctamente');
+          },
+          (error) => {
+            console.error(error);
+            alert('Error al asignar unidad');
+          }
+        );
+    }
+  }
 
   cerrarModal(): void {
     this.choferSeleccionado = undefined;

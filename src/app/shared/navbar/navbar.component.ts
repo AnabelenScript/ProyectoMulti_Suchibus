@@ -6,6 +6,7 @@ import { User } from '../../users/userModel';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { AuthService } from '../../service';
 import { AggChoferComponent } from '../../users/choferes/agg-chofer/agg-chofer.component';
 
 @Component({
@@ -21,10 +22,15 @@ import { AggChoferComponent } from '../../users/choferes/agg-chofer/agg-chofer.c
 export class NavbarComponent  {
   showModal: boolean = false;
   menuOpen = false;
+  showButton: boolean = false;
+
   selectUser: User = { id: 0, nombre: '', email: '', password: '' };
 
-  constructor(private userService: UserService,private location: Location, private router: Router) {}
-
+  constructor(private userService: UserService,private location: Location, private router: Router, private authservice: AuthService) {}
+  ngOnInit(): void {
+    const role = this.authservice.getRole();
+    this.showButton = role === 'Administrador';
+  }
   goBack(): void {
     this.location.back();
   }

@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'mostrarChoferes', component: ListChoferesComponent, canActivate: [authGuard] },
   {path: 'registrarAdministrador', component: AggAdministradoresComponent, canActivate: [authGuard]},
   {path: 'mostrarAdministradores', component: ListAdministradoresComponent, canActivate: [authGuard]},
-  {path: 'parada', component: ParadasListComponent , canActivate: [authGuard]}
+  {path: 'paradas', component: ParadasListComponent , canActivate: [authGuard]}
 ];
 
 
