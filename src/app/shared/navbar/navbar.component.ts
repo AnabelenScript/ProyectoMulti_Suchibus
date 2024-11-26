@@ -7,7 +7,6 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AuthService } from '../../service';
-import { AggChoferComponent } from '../../users/choferes/agg-chofer/agg-chofer.component';
 
 @Component({
   selector: 'app-navbar',
@@ -33,6 +32,11 @@ export class NavbarComponent  {
   }
   goBack(): void {
     this.location.back();
+  }
+  logout() {
+    localStorage.removeItem('authToken');
+    this.authservice.setRole(''); 
+    this.router.navigate(['/']);
   }
 
   toggleMenu() {

@@ -3,6 +3,8 @@ import { OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChoferService } from '../service';
 import { Chofer } from '../../userModel';
+import Swal from 'sweetalert2';
+
 
  export enum TipoUsuario {
   Chofer = 'Chofer',
@@ -67,8 +69,61 @@ export class AggChoferComponent {
   }
 
   registrarChofer(): void {
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(this.choferData.email)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'El correo electrónico no es válido.',
+      });
+      return;
+    }
+
+    const telefonoRegex = /^\d{10}$/;
+    if (!telefonoRegex.test(this.choferData.telefono)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'El teléfono debe tener exactamente 10 dígitos.',
+      });
+      return;
+    }
+
+    if (this.choferData.password.length !== 8) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'La contraseña debe tener exactamente 8 caracteres.',
+      });
+      return;
+    }
+
+    // Validar que todos los demás campos estén llenos
+    if (!this.choferData.nombre || 
+        !this.choferData.lastname || 
+        !this.choferData.email || 
+        !this.choferData.edad || 
+        !this.choferData.telefono || 
+        !this.choferData.username || 
+        !this.choferData.password || 
+        !this.choferData.licencia || 
+        !this.choferData.status || 
+        !this.choferData.direccion?.calle || 
+        !this.choferData.direccion?.ciudad || 
+        !this.choferData.direccion?.estado || 
+        !this.choferData.direccion?.codigoPostal) {
+        
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Todos los campos son obligatorios. Por favor, complete todos los campos.',
+      });
+      return; // Detiene la ejecución si hay campos vacíos
+    }
+
+    // Si todas las validaciones pasaron, se prepara el formulario
     const formData = new FormData();
-    
     formData.append('nombre', this.choferData.nombre);
     formData.append('lastname', this.choferData.lastname.toString());
     formData.append('email', this.choferData.email);
@@ -80,13 +135,13 @@ export class AggChoferComponent {
     formData.append('licencia', this.choferData.licencia);
     formData.append('status', this.choferData.status);
     formData.append('direccion', JSON.stringify(this.choferData.direccion));
-    
     formData.append('tipo_usuario', TipoUsuario.Chofer);
     
     if (this.selectedFile) {
       formData.append('file', this.selectedFile, this.selectedFile.name);
     }
     
+    // Realizar el registro del chofer
     this.choferService.registrarUsuario(formData).subscribe(
       (response) => {
         console.log('Chofer registrado exitosamente', response);
@@ -99,5 +154,5 @@ export class AggChoferComponent {
       }
     );
   }
-
 }
+

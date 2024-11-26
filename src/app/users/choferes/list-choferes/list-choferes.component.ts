@@ -37,17 +37,16 @@ export class ListChoferesComponent implements OnInit {
 
   mostrarDetallesChofer(id: number): void {
     this.choferService.obtenerUsuarioPorId(id).subscribe((data: Chofer) => {
-      // Validar y parsear 'direccion' si es necesario
       if (data.direccion && typeof data.direccion === 'string') {
         try {
-          data.direccion = JSON.parse(data.direccion); // Convertir cadena JSON a objeto
+          data.direccion = JSON.parse(data.direccion);
         } catch (error) {
           console.error('Error al parsear la dirección:', error);
-          data.direccion = undefined; // Si falla, aseguramos que no cause errores
+          data.direccion = undefined;
         }
       }
-      this.choferSeleccionado = data; // Asignar chofer seleccionado
-      console.log(this.choferSeleccionado); // Verificar datos en la consola
+      this.choferSeleccionado = data;
+      console.log(this.choferSeleccionado);
     });
   }
   registrarChofer(): void {

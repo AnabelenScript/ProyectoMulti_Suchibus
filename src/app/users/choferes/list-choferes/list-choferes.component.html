@@ -15,7 +15,7 @@
             <img *ngIf="chofer.imagen_url" [src]="chofer.imagen_url" alt="{{ chofer.nombre }}" />
           </div>
         <div class="card-name">{{ chofer.nombre }}</div>
-        <div class="card-email">{{ chofer.email }}</div>
+        <div class="card-email">{{ chofer.status }}</div>
       </div>
     </div>
 
@@ -59,8 +59,7 @@
         </form>
     
         <div class="modal-buttons">
-          <button class="edit">Guardar</button>
-          <button class="delete" (click)="cerrarModal()">Cancelar</button>
+          <button class="delete" (click)="cerrarModal()">Cerrar</button>
         </div>
       </div>
     </div>

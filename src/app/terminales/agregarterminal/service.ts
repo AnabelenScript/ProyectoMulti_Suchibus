@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TerminalService {
-  private apiUrl = 'http://127.0.0.1:5000/terminales'; 
+  private apiUrl = 'http://suchibusapi.integrador.xyz/terminales'; 
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +15,7 @@ export class TerminalService {
     return this.http.post(this.apiUrl, data, { headers });
   }
 
-  private apiUrl2 = 'http://127.0.0.1:5000/colonias'; // URL de la API
+  private apiUrl2 = 'http://suchibusapi2.integrador.xyz/colonias'; // URL de la API
 
 
   obtenerColoniasPorCp(cp: string): Observable<any> {

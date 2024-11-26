@@ -66,8 +66,15 @@ h1 {
   display: flex;
   gap: 10px;
 }
-
-.input-group input {
+select{
+  flex: 1;
+  padding:0;
+  border: 1px solid #ccc;
+  font-family: "Jost", sans-serif;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.219);
+  border-radius: 15px;
+}
+.input-group input, option {
   flex: 1;
   padding: 10px;
   border: 1px solid #ccc;

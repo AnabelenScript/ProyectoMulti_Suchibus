@@ -49,7 +49,11 @@
               <input type="password" placeholder="Contraseña" [(ngModel)]="administradorData.password" required>
             </div>
             <div class="input-group">
-              <input type="text" placeholder="Status" [(ngModel)]="administradorData.status" required>
+              <select [(ngModel)]="administradorData.status" required>
+                <option value="" disabled selected>Seleccionar Status del Chofer</option>
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+              </select>              
             </div>
           </div>
         </div>

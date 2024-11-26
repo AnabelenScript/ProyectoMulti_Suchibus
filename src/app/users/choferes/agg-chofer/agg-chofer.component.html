@@ -50,7 +50,11 @@
           </div>
           <div class="input-group">
             <input type="text" placeholder="Número de Licencia" [(ngModel)]="choferData.licencia" required>
-            <input type="text" placeholder="Status" [(ngModel)]="choferData.status" required>
+            <select [(ngModel)]="choferData.status" required>
+              <option value="" disabled selected>Seleccionar Status del Chofer</option>
+              <option value="activo">Activo</option>
+              <option value="inactivo">Inactivo</option>
+            </select>          
           </div>
         </div>
       </div>

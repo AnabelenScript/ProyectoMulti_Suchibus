@@ -17,6 +17,8 @@ export class UnidadesListComponent implements OnInit {
   showModalEditar:boolean = false
   terminalId: number | null = null;
   mensaje: string | null = null;
+  showButton: boolean = false;
+
 
 
   unidad: Unidad = {

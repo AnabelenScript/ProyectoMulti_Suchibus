@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service';
-
 @Component({
   selector: 'app-iniciar-sesion',
   templateUrl: './iniciar-sesion.component.html',
@@ -49,6 +48,7 @@ export class IniciarSesionComponent {
       this.mensaje = 'Por favor, complete todos los campos';
     }
   }
+
 
   registrar() {
     if (this.registerForm.valid) {

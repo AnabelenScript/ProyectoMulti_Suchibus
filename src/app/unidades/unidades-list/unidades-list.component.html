@@ -4,7 +4,7 @@
     <h2>Horario</h2>
   </div>
   <div class="container">
-    <h2>Unidades de la Terminal</h2><button routerLink="/paradas">Boton paradas xd</button>
+    <h2>Unidades de la Terminal</h2>
     <div class="unidades-container">
       <div
         *ngFor="let unidad of unidades"
@@ -21,8 +21,8 @@
       </div>
     </div>
     <div class="buttons">
-      <button (click)="abrirModal()">Agregar Unidad</button>
-      <button>Lista de choferes</button>
+      <button *ngIf="showButton" (click)="abrirModal()">Agregar Unidad</button>
+      <button routerLink="/paradas">visualizar paradas</button>
     </div>
   </div>
 </div>
