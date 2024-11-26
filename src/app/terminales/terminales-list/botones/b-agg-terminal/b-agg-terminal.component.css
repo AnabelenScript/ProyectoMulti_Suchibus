@@ -1,0 +1,67 @@
+
+  .card:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.584);
+  }  
+  .action-button {
+    display: flex;
+    align-items: center;
+    padding: 1em 4em;
+    background-color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Jost", sans-serif;
+    font-size: 24px;
+    height: 60px;
+    width: calc(30% - 1rem);
+    max-width: 300px;
+    justify-content: space-between;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: rgb(217, 217, 217) 0.2px solid;
+  }
+  
+  .action-button i {
+    margin-left: 0.1rem;
+    font-size: 34px;
+  }
+  
+  .action-button a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .action-button:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.584);
+  }
+  @media screen and (max-width: 1024px) {
+    .card {
+        width: calc(33% - 2vw);
+    }
+    .action-button {
+        width: calc(45% - 1rem);
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .card {
+        width: calc(50% - 2vw);
+    }
+    .action-button {
+        width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+    .action-button {
+        width: 100%;
+    }
+    .card-name {
+        font-size: 24px;
+    }
+    .card-icon img {
+        width: 60px;
+        height: 60px;
+    }
+  }

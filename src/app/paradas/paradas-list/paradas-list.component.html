@@ -1,0 +1,29 @@
+<h1 class="title">Paradas</h1>
+
+<div class="container">
+  <div class="paradas-container">
+    <h2>Paradas de la ruta</h2>
+    <div class="cards">
+      <div
+        *ngFor="let parada of paradas"
+        class="card"
+        (click)="verUnidadDetalle(parada._id!)">
+        <h3>{{ parada.location }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal" class="modal" *ngIf="selectedParadaUrl" (click)="cerrarModal()">
+  <div class="modal-content">
+    <h2>Detalle de la Parada</h2>
+    <iframe
+      [src]="selectedParadaUrl | safeUrl"
+      width="600"
+      height="450"
+      style="border:0"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>

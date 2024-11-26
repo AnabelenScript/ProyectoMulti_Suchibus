@@ -11,6 +11,7 @@ interface Terminal {
   telefono: string;
 }
 
+
 @Component({
   selector: 'app-terminales-list',
   templateUrl: './terminales-list.component.html',
@@ -21,7 +22,9 @@ export class TerminalesListComponent implements OnInit {
   terminales: Terminal[] = [];
 
   constructor(private terminalService: TerminalService, private router: Router) {}
+  mostrarBoton():void{
 
+  }
   ngOnInit(): void {
     this.terminalService.obtenerTerminales().subscribe(
       (data) => {

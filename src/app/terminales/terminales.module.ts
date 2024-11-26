@@ -9,6 +9,7 @@ import { AgregarterminalComponent } from './agregarterminal/agregarterminal.comp
 import { MiTerminalComponent } from './mi-terminal/mi-terminal.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { RouterLink } from '@angular/router';
+import { BAggTerminalComponent } from './terminales-list/botones/b-agg-terminal/b-agg-terminal.component';
 
 
 
@@ -18,7 +19,8 @@ import { RouterLink } from '@angular/router';
     TerminalesListComponent,
     AgregarterminalComponent,
     MiTerminalComponent,
-    TerminalComponent
+    TerminalComponent,
+    BAggTerminalComponent
    
   ],
   imports: [

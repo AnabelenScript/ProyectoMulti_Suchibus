@@ -13,7 +13,7 @@ export class IniciarSesionComponent {
   registerForm: FormGroup;
   isRegistering = false;
   mensaje: string | null = null;
-
+  rol: string= '';
   constructor(private fb: FormBuilder, private loginService: LoginService, private router:Router) {
 
     this.loginForm = this.fb.group({
@@ -35,6 +35,8 @@ export class IniciarSesionComponent {
         next: (response) => {
           this.mensaje = 'Inicio de sesión exitoso';
           console.log('Token:', response.token);
+          this.rol=response.role_enum
+          console.log(this.rol)
   
           localStorage.setItem('authToken', response.token);
   

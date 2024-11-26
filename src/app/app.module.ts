@@ -9,6 +9,8 @@ import { LoginModule } from './login/login.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { UsersModule } from './users/users.module';
+import { FooterComponent } from './shared/footer/footer.component';
+import { ParadasModule } from './paradas/paradas.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { UsersModule } from './users/users.module';
     UnidadesModule,
     UsersModule,
     LoginModule,
+    FooterComponent,
+    ParadasModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, ],
   bootstrap: [AppComponent]

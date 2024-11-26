@@ -20,9 +20,8 @@
     </div>
 
 
-    <div *ngIf="choferSeleccionado" class="modal">
+    <div *ngIf="choferSeleccionado" class="modal" (click)="cerrarModal()">
       <div class="modal-content">
-        <span class="close" (click)="cerrarModal()">&times;</span>
         <h1>Detalles del Chofer</h1>
         <form class="form-fields">
           <div class="input-group">

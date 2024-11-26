@@ -10,6 +10,7 @@ import { ListChoferesComponent } from './users/choferes/list-choferes/list-chofe
 import { authGuard } from './auth.guard';
 import { AggAdministradoresComponent } from './users/administradores/agg-administradores/agg-administradores.component';
 import { ListAdministradoresComponent } from './users/administradores/list-administradores/list-administradores.component';
+import { ParadasListComponent } from './paradas/paradas-list/paradas-list.component';
 
 const routes: Routes = [
   { path: '', component: IniciarSesionComponent },
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: 'mostrarChoferes', component: ListChoferesComponent, canActivate: [authGuard] },
   {path: 'registrarAdministrador', component: AggAdministradoresComponent, canActivate: [authGuard]},
   {path: 'mostrarAdministradores', component: ListAdministradoresComponent, canActivate: [authGuard]},
-  
+  {path: 'parada', component: ParadasListComponent , canActivate: [authGuard]}
 ];
 
 

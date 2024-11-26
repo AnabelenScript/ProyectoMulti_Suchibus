@@ -1,17 +1,19 @@
-<h1>Mis Unidades</h1>
+<h1>Mis Unidades</h1> 
 <div class="unidades">
   <div class="unidades-horario">
     <h2>Horario</h2>
   </div>
   <div class="container">
-    <h2>Unidades de la Terminal</h2>
+    <h2>Unidades de la Terminal</h2><button routerLink="/paradas">Boton paradas xd</button>
     <div class="unidades-container">
       <div
         *ngFor="let unidad of unidades"
         class="card"
         (click)="verUnidadDetalle(unidad.id)"
       >
-        <img src="assets/carro1.png" alt="Unidad Image" />
+      <div *ngIf="unidad.imagen_url" class="mainimg">
+        <img [src]="unidad.imagen_url" alt="Imagen de la unidad" class="imgMainContainer" />
+      </div>
         <h3>Unidad {{ unidad.numPlaca }}</h3>
       </div>
       <div *ngIf="mensaje" class="mensaje">
@@ -55,13 +57,16 @@
         </div>
         <div>
           <label for="marca">Marca:</label>
-          <input
+          <select
             type="text"
             id="marca"
             name="marca"
             [(ngModel)]="unidad.marca"
             required
-          />
+            >
+            <option value="Nissan">Nissan</option>
+            <option value="Toyota">Toyota</option>
+          </select>
         </div>
       </div>
       <div class="part2">
@@ -89,17 +94,17 @@
               <option value="mantenimiento">Mantenimiento</option>
             </select>
           </div>
-        </div>
-        <div class="add">
-          <button class="noselect">
-            <span class="text">Agregar imagen</span
-            ><span class="icon"
-              ><svg
-                viewBox="0 0 24 24"
-                height="24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"></svg><span class="buttonSpan">+</span></span>
-          </button>
+          <div>
+            <label for="imagen">Imagen:</label>
+            <input
+              type="file"
+              id="imagen"
+              name="imagen"
+              #fileInput
+              required
+            />
+          </div>
+          
         </div>
         <div class="buttons2">
           <button
@@ -193,7 +198,8 @@
               <span class="text">Editar imagen</span>
             </button>
           </div>
-          <div class="imgcontainer"></div>
+          <div class="imgcontainer">
+            <img *ngIf="unidad.imagen_url" [src]="unidad.imagen_url" alt="Imagen de la unidad" class="imagen-unidad" /> </div>
         </div>
       </div>
     </form>
