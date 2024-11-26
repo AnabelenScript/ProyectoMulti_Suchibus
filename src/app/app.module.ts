@@ -11,6 +11,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { UsersModule } from './users/users.module';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ParadasModule } from './paradas/paradas.module';
+import { RutasModule } from './rutas/rutas.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ParadasModule } from './paradas/paradas.module';
     UsersModule,
     LoginModule,
     FooterComponent,
-    ParadasModule
+    ParadasModule,
+    RutasModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, ],
   bootstrap: [AppComponent]

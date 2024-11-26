@@ -1,37 +1,40 @@
 <h1>Terminal</h1>
 <div class="terminales">
   <div class="terminal-container">
-    <div class="form-fields">
-      <div class="input-group" *ngIf="terminal && terminal.direccion">
-        <input type="text" placeholder="Nombre" [(ngModel)]="terminal.nombre" disabled="true"/>
-        <input type="text" placeholder="Num Exterior" [(ngModel)]="terminal.direccion.num" disabled="true"/>
+    <div class="main-container">
+      <div class="form-fields">
+        <div class="input-group" *ngIf="terminal && terminal.direccion">
+          <input type="text" placeholder="Nombre" [(ngModel)]="terminal.nombre" disabled="true"/>
+          <input type="text" placeholder="Num Exterior" [(ngModel)]="terminal.direccion.num" disabled="true"/>
+        </div>
+        <div class="input-group" *ngIf="terminal?.direccion">
+          <input type="text" placeholder="Codigo postal" [(ngModel)]="terminal.direccion.cp" disabled="true" />
+          <input type="text" placeholder="Estado" [(ngModel)]="terminal.direccion.estado" disabled="true" />
+        </div>
+        <div class="input-group" *ngIf="terminal && terminal.direccion">
+          <input type="text" placeholder="Calle" [(ngModel)]="terminal.direccion.calle" disabled="true"/>
+          <input type="text" placeholder="Teléfono" [(ngModel)]="terminal.telefono" disabled="true"/>
+        </div>
+        <div class="input-group" *ngIf="terminal && terminal.direccion">
+          <input type="text" placeholder="Colonia" [(ngModel)]="terminal.direccion.colonia" disabled="true"/>
+          <input type="text" placeholder="Horario de apertura" [(ngModel)]="terminal.horarioApertura" disabled="true" />
+        </div>
+        <div class="input-group" *ngIf="terminal && terminal.direccion">
+          <input type="text" placeholder="Municipio" [(ngModel)]="terminal.direccion.municipio" disabled="true" />
+          <input type="text" placeholder="Horario de cierre" [(ngModel)]="terminal.horarioCierre"  disabled="true"/>
+        </div>
       </div>
-      <div class="input-group" *ngIf="terminal?.direccion">
-        <input type="text" placeholder="Codigo postal" [(ngModel)]="terminal.direccion.cp" disabled="true" />
-        <input type="text" placeholder="Estado" [(ngModel)]="terminal.direccion.estado" disabled="true" />
-      </div>
-      <div class="input-group" *ngIf="terminal && terminal.direccion">
-        <input type="text" placeholder="Calle" [(ngModel)]="terminal.direccion.calle" disabled="true"/>
-        <input type="text" placeholder="Teléfono" [(ngModel)]="terminal.telefono" disabled="true"/>
-      </div>
-      <div class="input-group" *ngIf="terminal && terminal.direccion">
-        <input type="text" placeholder="Colonia" [(ngModel)]="terminal.direccion.colonia" disabled="true"/>
-        <input type="text" placeholder="Horario de apertura" [(ngModel)]="terminal.horarioApertura" disabled="true" />
-      </div>
-      <div class="input-group" *ngIf="terminal && terminal.direccion">
-        <input type="text" placeholder="Municipio" [(ngModel)]="terminal.direccion.municipio" disabled="true" />
-        <input type="text" placeholder="Horario de cierre" [(ngModel)]="terminal.horarioCierre"  disabled="true"/>
-      </div>
-      <div class="buttons">
-        <button type="button" class="carlist" [routerLink]="['/unidadeslist', terminal.id]">Ver unidades</button>
-        <button type="button" class="edit" (click)="abrirModal()">Editar</button>
-        <button type="button" class="delete" (click)="eliminarTerminal()">Eliminar</button>
+      <div class="map-container">
+        <h3>Ubicación en el mapa</h3>
+        <p>Calle San Juan, 5 de Mayo, Suchiapa, Chiapas</p>
+        <img src="https://via.placeholder.com/300x200" alt="Mapa de ubicación" />
       </div>
     </div>
-    <div class="map-container">
-      <h3>Ubicación en el mapa</h3>
-      <p>Calle San Juan, 5 de Mayo, Suchiapa, Chiapas</p>
-      <img src="https://via.placeholder.com/300x200" alt="Mapa de ubicación" />
+    <div class="buttons">
+      <button type="button" class="carlist" [routerLink]="['/unidadeslist', terminal.id]">Ver unidades</button>
+      <button type="button" class="edit" (click)="abrirModal()">Editar</button>
+      <button class="view-button" (click)="verRuta(terminal.id_ruta)">Ver ruta</button>
+      <button type="button" class="delete" (click)="eliminarTerminal()">Eliminar</button>
     </div>
   </div>
 </div>
@@ -65,3 +68,26 @@
     </div>
   </div>
 </div>
+
+<div class="modal" *ngIf="modalRutaVisible" (click)=cerrarModalRuta()>
+  <div class="modal-content">
+    <h2>Detalles de la Ruta</h2>
+    <div *ngIf="rutaSeleccionada">
+      <p><strong>Ruta:</strong> {{ rutaSeleccionada.nombre }}</p>
+      <p><strong>Origen:</strong> {{ rutaSeleccionada.origin }}</p>
+      <p><strong>Destino:</strong> {{ rutaSeleccionada.destination }}</p>
+      <iframe *ngIf="selectedRutaUrl"
+        [src]="selectedRutaUrl | safeUrl"
+        width="600"
+        height="450"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="modal-buttons">
+      <button routerLink="/parada">Ver paradas</button>
+    </div>
+  </div>
+</div>
+

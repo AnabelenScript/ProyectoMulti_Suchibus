@@ -8,11 +8,12 @@
     margin-left: 180px;
     font-family: "Jost", sans-serif;
   }
-  
-  .form-container {
+
+  .maincontainer{
     display: flex;
-    gap: 3vw;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 4vw;
     width: 1200px;
     height:auto;
@@ -22,10 +23,17 @@
     border: rgb(217, 217, 217) 0.2px solid;
   }
   
+  .form-container {
+    display: flex;
+    gap: 3vw;
+    justify-content: center;
+    height:auto;
+  }
+  
   .form-fields {
     flex: 1;
-    height: 400px;
     width: 580px;
+    height: auto;
     justify-content: center;
     align-items: center;
   }
@@ -49,7 +57,6 @@
   }
   
   .add-button {
-    margin-left: 146px;
     margin-top: 5px;
     width: 280px;
     height: 55px;
@@ -75,7 +82,7 @@
     background-color: #ffffff;
     padding: 20px;
     width: 500px;
-    height:420px;
+    height:483px;
     box-shadow:  0px 2px 4px rgba(0, 0, 0, 0.275);
   }
   
@@ -99,4 +106,6 @@
     border-radius: 8px;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   }
+
+  
   

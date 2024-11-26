@@ -4,4 +4,5 @@ export interface Parada {
     zoom: number;
     puntoParadaURL?: string;
     puntoParadaHTML?: string;
-  }
+    ruta_id : string;
+}

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Parada } from '../../paradas/paradaModel';
 
 interface Terminal {
   id: number;
@@ -10,6 +11,7 @@ interface Terminal {
   horarioApertura: string;
   horarioCierre: string;
   telefono: string;
+  id_ruta: String
 }
 
 @Injectable({
@@ -45,5 +47,8 @@ export class TerminalService {
 
   eliminarTerminal(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+  getParadaByIdTerminal(id: string): Observable<Parada> {
+    return this.http.get<Parada>(`${this.apiUrl}/ruta/${id}`);
   }
 }

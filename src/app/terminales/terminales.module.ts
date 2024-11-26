@@ -10,6 +10,12 @@ import { MiTerminalComponent } from './mi-terminal/mi-terminal.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { RouterLink } from '@angular/router';
 import { BAggTerminalComponent } from './terminales-list/botones/b-agg-terminal/b-agg-terminal.component';
+import { RutaService } from '../rutas/service';
+import { RutasModule } from '../rutas/rutas.module';
+import { SafeUrlPipe } from '../paradas/safe-url-pipe';
+import { ParadasModule } from '../paradas/paradas.module';
+import { Router } from '@angular/router';  // Importa Router
+
 
 
 
@@ -29,7 +35,10 @@ import { BAggTerminalComponent } from './terminales-list/botones/b-agg-terminal/
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterLink
+    RouterLink,
+    RutasModule,
+    ParadasModule,
+  
   ],
   exports:[
    TerminalesListComponent,

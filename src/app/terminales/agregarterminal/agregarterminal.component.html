@@ -1,5 +1,6 @@
 <h1>Agregar Terminal</h1>
 <div class="add-terminal-container">
+  <div class="maincontainer">
   <div class="form-container">
     <div class="form-fields">
       <div class="input-group">
@@ -15,7 +16,7 @@
         <input type="text" placeholder="Teléfono" [(ngModel)]="terminalData.telefono">
       </div>
       <div class="input-group">
-        <select [(ngModel)]="terminalData.colonia"  aria-placeholder="Colonias">
+        <select [(ngModel)]="terminalData.colonia" aria-placeholder="Colonias">
           <option *ngFor="let colonia of colonias" [value]="colonia">{{ colonia }}</option>
         </select>
         <input type="text" placeholder="Horario de apertura" [(ngModel)]="terminalData.horarioApertura">
@@ -24,12 +25,18 @@
         <input type="text" placeholder="Municipio" [(ngModel)]="terminalData.municipio">
         <input type="text" placeholder="Horario de cierre" [(ngModel)]="terminalData.horarioCierre">
       </div>
-      <button class="add-button" (click)="agregarTerminal()">Agregar</button>
+      <div class="input-group">
+        <select [(ngModel)]="terminalData.ruta_id" aria-placeholder="Rutas">
+          <option *ngFor="let ruta of rutas" [value]="ruta._id">{{ ruta.nombre }}</option>
+        </select>
+      </div>      
+      
     </div>
     <div class="map-container">
       <h3>Ubicación en el mapa</h3>
       <p>Calle San Juan, 5 de Mayo, Suchiapa, Chiapas</p>
       <img src="https://via.placeholder.com/300x200" alt="Mapa de ubicación">
     </div>
-  </div>
+  </div><button class="add-button" (click)="agregarTerminal()">Agregar</button></div>
 </div>
+

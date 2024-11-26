@@ -31,4 +31,9 @@ export class PuntosParadaService {
   deleteParada(id: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`);
  }
+
+ getParadaByIdRuta(ruta_id: string): Observable<Parada[]> {
+  return this.http.get<Parada[]>(`${this.apiUrl}/ruta/${ruta_id}`);
+}
+ 
 }

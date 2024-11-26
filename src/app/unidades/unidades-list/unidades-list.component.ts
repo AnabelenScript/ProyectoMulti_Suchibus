@@ -139,6 +139,7 @@ export class UnidadesListComponent implements OnInit {
               confirmButtonText: 'Aceptar'
             }).then(() => {
               this.cerrarModal();
+              this.cargarUnidades();
             });
           },
           (error) => {

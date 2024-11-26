@@ -12,6 +12,10 @@ import { SafeUrlPipe } from './safe-url-pipe';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ParadasListComponent,
+    SafeUrlPipe
   ]
 })
 export class ParadasModule { }

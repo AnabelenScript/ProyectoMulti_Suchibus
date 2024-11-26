@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PuntosParadaService} from '../service';
 import { Parada } from '../paradaModel';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-paradas-list',
@@ -10,11 +11,12 @@ import { Parada } from '../paradaModel';
 export class ParadasListComponent implements OnInit {
   paradas: Parada[] = [];
   selectedParadaUrl: string | null = null;
+  paradaId: string | null = null;
 
   constructor(private puntosParadaService: PuntosParadaService) {}
 
   ngOnInit(): void {
-    this.obtenerParadas();
+   this.obtenerParadas()
   }
   obtenerParadas(): void {
     this.puntosParadaService.getPuntosParada().subscribe(
