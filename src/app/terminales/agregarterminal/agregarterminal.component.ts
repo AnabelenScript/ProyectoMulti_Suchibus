@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TerminalService } from './service';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../service';
 
 
 @Component({
@@ -25,7 +26,10 @@ export class AgregarterminalComponent {
   colonias: any[] = [];
   loadingColonias= false;
 
-  constructor(private terminalService: TerminalService) {}
+  constructor(
+    private terminalService: TerminalService,
+    private authService: AuthService
+  ) {}
 
 
   obtenerColoniasPorCP(): void {

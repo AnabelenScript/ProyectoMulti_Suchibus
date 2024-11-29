@@ -39,6 +39,7 @@ export interface Administrador {
   imagen_url?: string;
   tipo_usuario: TipoUsuario;
   status: '';
+  terminal_id: '',
 }
 export interface User {
     id?: number;

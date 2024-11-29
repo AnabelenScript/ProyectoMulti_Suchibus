@@ -36,6 +36,7 @@ export class IniciarSesionComponent {
           this.mensaje = 'Inicio de sesión exitoso';
           console.log('Token:', response.token);
           this.authService.setRole(response.role_enum);
+          this.authService.setAdminId(response.iduser);
           localStorage.setItem('authToken', response.token);
           this.router.navigate(['/terminales']);
         },

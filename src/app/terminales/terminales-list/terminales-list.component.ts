@@ -41,8 +41,8 @@ export class TerminalesListComponent implements OnInit {
   
 
 //  verTerminal(id: number): void {
- //   this.router.navigate(['/terminal', id]);
- // }
+//   this.router.navigate(['/terminal', id]);
+// }
 
 
  verTerminal(terminalId: number): void {
