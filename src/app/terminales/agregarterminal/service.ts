@@ -3,10 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class TerminalService {
-  private apiUrl = 'http://suchibusapi.integrador.xyz/terminales'; 
+export class TerminalServiceagg {
+  private apiUrl = 'http://127.0.0.1:5000/terminales';
+  private apiUrl2 = 'http://127.0.0.1:5000/colonias';
 
   constructor(private http: HttpClient) {}
 
@@ -15,11 +16,7 @@ export class TerminalService {
     return this.http.post(this.apiUrl, data, { headers });
   }
 
-  private apiUrl2 = 'http://suchibusapi2.integrador.xyz/colonias'; // URL de la API
-
-
   obtenerColoniasPorCp(cp: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl2}?cp=${cp}`);
   }
-
 }

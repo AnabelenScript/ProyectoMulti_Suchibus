@@ -14,9 +14,11 @@
       <li>
         <a (click)="inicio()"><i class='bx bx-home bx-tada' ></i> <span>Inicio</span></a>
         <ul class="nav-flyout">
-          <li><a *ngIf="showButton"(click)="mostrarAdministradores()"><i class='bx bxs-user-detail' ></i>Administradores</a></li>
-          <li><a *ngIf="showButton"(click)="mostrarChoferes()"><i class='bx bxs-id-card'></i>Choferes</a></li>
-          <li><a (click)="logout()"><i class='bx bx-exit bx-rotate-180' style='color:#ffffff' ></i>Cerrar Sesion</a></li>
+          <a *ngIf="canSeeAdminLink" (click)="mostrarAdministradores()">
+            <i class='bx bxs-user-detail'></i> 
+            <span>Administradores</span>
+          </a>
+                    <li><a (click)="logout()"><i class='bx bx-exit bx-rotate-180' style='color:#ffffff' ></i>Cerrar Sesion</a></li>
         </ul>
       </li>
     </ul>

@@ -7,7 +7,7 @@ import { Administrador, Chofer } from '../userModel';
   providedIn: 'root'
 })
 export class ChoferService {
-  private baseUrl = 'http://suchibusapi2.integrador.xyz';
+  private baseUrl = 'http://127.0.0.1:5000';
 
   constructor(private http: HttpClient) {}
 
@@ -15,9 +15,10 @@ export class ChoferService {
     return this.http.post(`${this.baseUrl}/users`, formData);
   }
 
-  obtenerTodosUsuarios(): Observable<Chofer[]> {
-    return this.http.get<Chofer[]>(`${this.baseUrl}/users`);
+  obtenerChoferesPorTermminal(terminalId: number): Observable<Chofer[]> {
+    return this.http.get<Chofer[]>(`${this.baseUrl}/choferes/${terminalId}`);
   }
+  
   obtenerTodosUsuariosAdmin(): Observable<Administrador[]> {
     return this.http.get<Administrador[]>(`${this.baseUrl}/users`);
   }

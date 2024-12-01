@@ -34,8 +34,13 @@ export class IniciarSesionComponent {
       this.loginService.loginUsuario(this.loginForm.value).subscribe({
         next: (response) => {
           this.mensaje = 'Inicio de sesión exitoso';
+          console.log('Response:', response);
           console.log('Token:', response.token);
+          console.log('Role:', response.role_enum);
+          console.log('Admin ID:', response.iduser);
+          
           this.authService.setRole(response.role_enum);
+          this.authService.setAdminId(response.iduser);
           localStorage.setItem('authToken', response.token);
           this.router.navigate(['/terminales']);
         },
@@ -48,6 +53,7 @@ export class IniciarSesionComponent {
       this.mensaje = 'Por favor, complete todos los campos';
     }
   }
+  
 
 
   registrar() {

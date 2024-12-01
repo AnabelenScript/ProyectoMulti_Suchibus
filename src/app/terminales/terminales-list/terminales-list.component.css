@@ -69,7 +69,6 @@
   font-family: "Jost", sans-serif;
   font-size: 24px;
   height: 60px;
-  width: calc(40% - 1rem);
   max-width: 328px;
   justify-content: space-between;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);

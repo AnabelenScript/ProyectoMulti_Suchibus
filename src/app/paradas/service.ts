@@ -7,7 +7,7 @@ import { Parada } from './paradaModel';
   providedIn: 'root'
 })
 export class PuntosParadaService {
-  private readonly apiUrl = 'http://suchibusapi.integrador.xyz'; // Cambia esto según tu configuración de backend
+  private readonly apiUrl = 'http://suchibusapi.integrador.xyz';
 
   constructor(private http: HttpClient) {}
 

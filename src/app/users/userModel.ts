@@ -19,6 +19,8 @@ export interface Chofer {
   imagen_url?: string;
   tipo_usuario: TipoUsuario;
   status: '';
+  terminal_id: number;
+
 }
 export interface Administrador {
   id?: number;

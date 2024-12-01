@@ -4,6 +4,7 @@ import { UnidadService } from '../service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthService } from '../../service';
 @Component({
   selector: 'app-unidades-list',
   templateUrl: './unidades-list.component.html',
@@ -37,10 +38,13 @@ export class UnidadesListComponent implements OnInit {
     private unidadService: UnidadService,
     private route: ActivatedRoute,
     private router: Router,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private authService : AuthService
   ) {}
 
   ngOnInit(): void {
+    const role = this.authService.getRole();
+    this.showButton = role === 'Administrador';
     this.route.paramMap.subscribe(params => {
       this.terminalId = Number(params.get('terminalId'));
 

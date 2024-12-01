@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Unidad } from './unidadModel';
-import { map } from 'rxjs/operators';  // Asegúrate de importar map de rxjs/operators
+import { map } from 'rxjs/operators'; 
 import { SafeUrl } from '@angular/platform-browser';
 
 @Injectable({
@@ -10,8 +10,8 @@ import { SafeUrl } from '@angular/platform-browser';
 })
 export class UnidadService {
 
-  private apiUrl = 'http://suchibusapi2.integrador.xyz';
-  private imageURL = 'http://suchibusapi2.integrador.xyz/drive/download'
+  private apiUrl = 'http://127.0.0.1:5000/unidades';
+  private imageURL = 'http://127.0.0.1:5000/drive/download'
 
   constructor(private http: HttpClient) {}
 
