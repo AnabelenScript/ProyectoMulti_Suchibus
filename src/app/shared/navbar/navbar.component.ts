@@ -22,6 +22,7 @@ export class NavbarComponent  {
   showModal: boolean = false;
   menuOpen = false;
   showButton: boolean = false;
+  canSeeAdminLink: boolean = false;
 
   selectUser: User = { id: 0, nombre: '', email: '', password: '' };
 
@@ -29,6 +30,8 @@ export class NavbarComponent  {
   ngOnInit(): void {
     const role = this.authservice.getRole();
     this.showButton = role === 'Administrador';
+    const adminId = this.authservice.getAdminId();
+    this.canSeeAdminLink = role === 'Pasajero' && adminId === 1;
   }
   goBack(): void {
     this.location.back();
