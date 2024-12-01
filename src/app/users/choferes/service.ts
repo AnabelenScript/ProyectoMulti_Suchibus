@@ -15,9 +15,10 @@ export class ChoferService {
     return this.http.post(`${this.baseUrl}/users`, formData);
   }
 
-  obtenerTodosUsuarios(): Observable<Chofer[]> {
-    return this.http.get<Chofer[]>(`${this.baseUrl}/users`);
+  obtenerChoferesPorTermminal(terminalId: number): Observable<Chofer[]> {
+    return this.http.get<Chofer[]>(`${this.baseUrl}/choferes/${terminalId}`);
   }
+  
   obtenerTodosUsuariosAdmin(): Observable<Administrador[]> {
     return this.http.get<Administrador[]>(`${this.baseUrl}/users`);
   }

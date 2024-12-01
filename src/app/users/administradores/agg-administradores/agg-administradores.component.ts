@@ -34,7 +34,6 @@ export class AggAdministradoresComponent {
     imagen_url: '',
     tipo_usuario: TipoUsuario.Administrador,
     status: '',
-    terminal_id: '',
   };
 
   selectedFile: File | null = null;
@@ -64,14 +63,12 @@ export class AggAdministradoresComponent {
         !this.administradorData.username || !this.administradorData.telefono || 
         !this.administradorData.edad || !this.administradorData.status || 
         !this.administradorData.direccion?.calle || !this.administradorData.direccion?.ciudad || 
-        !this.administradorData.direccion?.estado || !this.administradorData.direccion?.codigoPostal ||
-        !this.administradorData.terminal_id
+        !this.administradorData.direccion?.estado || !this.administradorData.direccion?.codigoPostal
       ) {
       Swal.fire('Error', 'Todos los campos son obligatorios', 'error');
       return;
     }
 
-    // Validaciones de los campos
     if (!this.isValidEmail(this.administradorData.email)) {
       Swal.fire('Error', 'El correo electrónico no es válido.', 'error');
       return;
@@ -98,7 +95,6 @@ export class AggAdministradoresComponent {
     formData.append('password', this.administradorData.password);
     formData.append('status', this.administradorData.status);
     formData.append('direccion', JSON.stringify(this.administradorData.direccion));
-    formData.append('terminal_id', this.administradorData.terminal_id)
     formData.append('tipo_usuario', TipoUsuario.Administrador);
 
     if (this.selectedFile) {
@@ -117,18 +113,15 @@ export class AggAdministradoresComponent {
     );
   }
 
-  // Método de validación para el email
   isValidEmail(email: string): boolean {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailPattern.test(email);
   }
 
-  // Método de validación para el teléfono
   isValidPhone(phone: string): boolean {
     return phone.length === 10;
   }
 
-  // Método de validación para la contraseña
   isValidPassword(password: string): boolean {
     return password.length === 8;
   }

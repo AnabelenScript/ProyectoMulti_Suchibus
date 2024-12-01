@@ -1,67 +1,87 @@
-<h1>Terminal</h1>
+<h1>Información de la Terminal</h1>
 <div class="terminales">
   <div class="terminal-container">
     <div class="form-fields">
       <div class="input-group" *ngIf="terminal && terminal.direccion">
-        <input type="text" placeholder="Nombre" [(ngModel)]="terminal.nombre" disabled="true"/>
-        <input type="text" placeholder="Num Exterior" [(ngModel)]="terminal.direccion.num" disabled="true"/>
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" placeholder="Nombre" [(ngModel)]="terminal.nombre" disabled />
+        <label for="numExterior">Num Exterior</label>
+        <input id="numExterior" type="text" placeholder="Num Exterior" [(ngModel)]="terminal.direccion.num" disabled />
       </div>
       <div class="input-group" *ngIf="terminal?.direccion">
-        <input type="text" placeholder="Codigo postal" [(ngModel)]="terminal.direccion.cp" disabled="true" />
-        <input type="text" placeholder="Estado" [(ngModel)]="terminal.direccion.estado" disabled="true" />
+        <label for="codigoPostal">Código Postal</label>
+        <input id="codigoPostal" type="text" placeholder="Codigo Postal" [(ngModel)]="terminal.direccion.cp" disabled />
+        <label for="estado">Estado</label>
+        <input id="estado" type="text" placeholder="Estado" [(ngModel)]="terminal.direccion.estado" disabled />
       </div>
       <div class="input-group" *ngIf="terminal && terminal.direccion">
-        <input type="text" placeholder="Calle" [(ngModel)]="terminal.direccion.calle" disabled="true"/>
-        <input type="text" placeholder="Teléfono" [(ngModel)]="terminal.telefono" disabled="true"/>
+        <label for="calle">Calle</label>
+        <input id="calle" type="text" placeholder="Calle" [(ngModel)]="terminal.direccion.calle" disabled />
+        <label for="telefono">Teléfono</label>
+        <input id="telefono" type="text" placeholder="Teléfono" [(ngModel)]="terminal.telefono" disabled />
       </div>
       <div class="input-group" *ngIf="terminal && terminal.direccion">
-        <input type="text" placeholder="Colonia" [(ngModel)]="terminal.direccion.colonia" disabled="true"/>
-        <input type="text" placeholder="Horario de apertura" [(ngModel)]="terminal.horarioApertura" disabled="true" />
+        <label for="colonia">Colonia</label>
+        <input id="colonia" type="text" placeholder="Colonia" [(ngModel)]="terminal.direccion.colonia" disabled />
+        <label for="horarioApertura">Apertura</label>
+        <input id="horarioApertura" type="text" placeholder="Horario de Apertura" [(ngModel)]="terminal.horarioApertura" disabled />
       </div>
       <div class="input-group" *ngIf="terminal && terminal.direccion">
-        <input type="text" placeholder="Municipio" [(ngModel)]="terminal.direccion.municipio" disabled="true" />
-        <input type="text" placeholder="Horario de cierre" [(ngModel)]="terminal.horarioCierre"  disabled="true"/>
+        <label for="municipio">Municipio</label>
+        <input id="municipio" type="text" placeholder="Municipio" [(ngModel)]="terminal.direccion.municipio" disabled />
+        <label for="horarioCierre">Cierre</label>
+        <input id="horarioCierre" type="text" placeholder="Horario de Cierre" [(ngModel)]="terminal.horarioCierre" disabled />
       </div>
       <div class="buttons">
-        <button type="button" class="carlist" [routerLink]="['/unidadeslist', terminal.id]">Ver unidades</button>
-        <button type="button" class="edit" (click)="abrirModal()">Editar</button>
-        <button type="button" class="delete" (click)="eliminarTerminal()">Eliminar</button>
+        <button type="button" class="carlist" [routerLink]="['/unidadeslist', terminal.id]"><i class='bx bxs-bus' > </i></button>
+        <button type="button" class="edit" (click)="abrirModal()"><i class='bx bxs-edit-alt'> </i></button>
+        <button type="button" class="edit" [routerLink]="['/mostrarChoferes', terminal.id]"><i class='bx bxs-id-card'></i></button>
       </div>
-    </div>
-    <div class="map-container">
-      <h3>Ubicación en el mapa</h3>
-      <p>Calle San Juan, 5 de Mayo, Suchiapa, Chiapas</p>
-      <img src="https://via.placeholder.com/300x200" alt="Mapa de ubicación" />
     </div>
   </div>
 </div>
 
+<!-- Modal para edición -->
 <div class="modal" *ngIf="modalVisible">
   <div class="modal-content">
     <h2>Editar Terminal</h2>
     <div class="input-group" *ngIf="terminal && terminal.direccion">
-      <input type="text" placeholder="Nombre" [(ngModel)]="terminal.nombre" />
-      <input type="text" placeholder="Num Exterior" [(ngModel)]="terminal.direccion.num" />
+      <label for="nombreModal">Nombre</label>
+      <input id="nombreModal" type="text" placeholder="Nombre" [(ngModel)]="terminal.nombre" />
+      <label for="numExteriorModal">Num Exterior</label>
+      <input id="numExteriorModal" type="text" placeholder="Num Exterior" [(ngModel)]="terminal.direccion.num" />
     </div>
     <div class="input-group" *ngIf="terminal?.direccion">
-      <input type="text" placeholder="Codigo Postal"[(ngModel)]="terminal.direccion.cp"/>
-      <input type="text" placeholder="Estado"[(ngModel)]="terminal.direccion.estado">
+      <label for="codigoPostalModal">Código Postal</label>
+      <input id="codigoPostalModal" type="text" placeholder="Código Postal" [(ngModel)]="terminal.direccion.cp" (blur)="obtenerColoniasPorCP()" />
     </div>
-    <div class="input-group" *ngIf="terminal && terminal.direccion">
-      <input type="text" placeholder="Calle" [(ngModel)]="terminal.direccion.calle" />
-      <input type="text" placeholder="Teléfono" [(ngModel)]="terminal.telefono" />
+    <div class="input-group">
+      <label for="coloniaModal">Colonia</label>
+      <select id="coloniaModal" [(ngModel)]="terminal.direccion.colonia">
+        <option *ngFor="let colonia of colonias" [value]="colonia">{{ colonia }}</option>
+      </select>
     </div>
-    <div class="input-group" *ngIf="terminal && terminal.direccion">
-      <input type="text" placeholder="Colonia" [(ngModel)]="terminal.direccion.colonia" />
-      <input type="text" placeholder="Horario de apertura" [(ngModel)]="terminal.horarioApertura" />
+    <div class="input-group">
+      <label for="estadoModal">Estado</label>
+      <input id="estadoModal" type="text" placeholder="Estado" [(ngModel)]="terminal.direccion.estado" disabled/>
+      <label for="calleModal">Calle</label>
+      <input id="calleModal" type="text" placeholder="Calle" [(ngModel)]="terminal.direccion.calle" />
     </div>
-    <div class="input-group" *ngIf="terminal && terminal.direccion">
-      <input type="text" placeholder="Municipio" [(ngModel)]="terminal.direccion.municipio" />
-      <input type="text" placeholder="Horario de cierre" [(ngModel)]="terminal.horarioCierre" />
+    <div class="input-group">
+      <label for="telefonoModal">Teléfono</label>
+      <input id="telefonoModal" type="text" placeholder="Teléfono" [(ngModel)]="terminal.telefono" />
+      <label for="horarioAperturaModal">Horario de Apertura</label>
+      <input id="horarioAperturaModal" type="text" placeholder="Horario de Apertura" [(ngModel)]="terminal.horarioApertura" />
+    </div>
+    <div class="input-group">
+      <label for="municipioModal">Municipio</label>
+      <input id="municipioModal" type="text" placeholder="Municipio" [(ngModel)]="terminal.direccion.municipio" disabled/>
+      <label for="horarioCierreModal">Horario de Cierre</label>
+      <input id="horarioCierreModal" type="text" placeholder="Horario de Cierre" [(ngModel)]="terminal.horarioCierre" />
     </div>
     <div class="modal-buttons">
-      <button (click)="guardarCambios()">Aceptar</button>
-      <button (click)="cerrarModal()">Cancelar</button>
+      <button class="uno" (click)="guardarCambios()"><i class='bx bxs-save'></i></button>
+      <button class="dos" (click)="cerrarModal()"><i class='bx bx-x'></i></button>
     </div>
   </div>
 </div>

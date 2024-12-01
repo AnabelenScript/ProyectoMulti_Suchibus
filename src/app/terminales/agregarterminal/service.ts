@@ -5,10 +5,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class TerminalService {
+export class TerminalServiceagg {
   private apiUrl = 'http://127.0.0.1:5000/terminales';
   private apiUrl2 = 'http://127.0.0.1:5000/colonias';
-  private adminApiUrl = 'http://127.0.0.1:5000/admin';
 
   constructor(private http: HttpClient) {}
 
@@ -19,11 +18,5 @@ export class TerminalService {
 
   obtenerColoniasPorCp(cp: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl2}?cp=${cp}`);
-  }
-
-  asignarTerminalAdmin(adminId: number, terminalId: number): Observable<any> {
-    return this.http.put(`${this.adminApiUrl}/${adminId}/assign-terminal`, {
-      terminal_id: terminalId,
-    });
   }
 }

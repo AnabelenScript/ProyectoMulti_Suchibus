@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   private userRole: string | null = null;
-  private adminIdKey = 'adminId'; // Clave para almacenar el id del admin
+  private adminIdKey = 'adminId'; 
 
   setRole(role: string) {
     this.userRole = role;
@@ -19,7 +19,7 @@ export class AuthService {
   clearRole() {
     this.userRole = null;
     localStorage.removeItem('userRole');
-    localStorage.removeItem(this.adminIdKey); // Limpiar también el id del admin
+    localStorage.removeItem(this.adminIdKey); 
   }
 
   setAdminId(adminId: number) {
@@ -28,6 +28,8 @@ export class AuthService {
 
   getAdminId(): number | null {
     const id = localStorage.getItem(this.adminIdKey);
+    console.log('Admin ID desde localStorage:', id); // Verifica que el adminId esté bien almacenado
     return id ? parseInt(id, 10) : null;
   }
+  
 }

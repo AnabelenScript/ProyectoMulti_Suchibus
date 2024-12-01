@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChoferService } from '../service';
 import { Chofer } from '../../userModel';
 import { TipoUsuario } from '../agg-chofer/agg-chofer.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -17,22 +17,36 @@ export class ListChoferesComponent implements OnInit {
   unidades: any[] = [];
   choferSeleccionado: any = null;
   unidadSeleccionada: any = null;
+  terminalId: number | null = null;
 
-  constructor(private choferService: ChoferService, private router:Router) {}
+
+  constructor(private choferService: ChoferService, private router:Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.cargarChoferes();
+    this.route.paramMap.subscribe(params=>{
+      this.terminalId = Number(params.get('terminalId'))
+
+      if(this.terminalId){
+        this.cargarChoferes();
+      }else{
+        console.warn('No se encontro el terminalid en la url')
+      }
+    })
+    
+
   }
 
-  cargarChoferes(): void {
-    this.choferService.obtenerTodosUsuarios().subscribe(
-      (usuarios) => {
-        this.choferes = usuarios.filter((usuario: Chofer) => usuario.tipo_usuario === TipoUsuario.Chofer);
-      },
-      (error) => {
-        console.error('Error al cargar los choferes:', error);
-      }
-    );
+  cargarChoferes(): void{
+    if(this.terminalId !== null){
+      this.choferService.obtenerChoferesPorTermminal(this.terminalId).subscribe(
+        (response)=>{
+          this.choferes = response;
+        },
+        (err)=>{
+          console.log(err)
+        }
+      )
+    }
   }
 
   mostrarDetallesChofer(id: number): void {
@@ -50,7 +64,7 @@ export class ListChoferesComponent implements OnInit {
     });
   }
   registrarChofer(): void {
-    this.router.navigate(['/registrarChofer']);
+    this.router.navigate([`/registrarChofer/${this.terminalId}`]);
   }
   asignarUnidad() {
     if (this.choferSeleccionado && this.unidadSeleccionada) {

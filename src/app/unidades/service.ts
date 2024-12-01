@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Unidad } from './unidadModel';
-import { map } from 'rxjs/operators';  // Asegúrate de importar map de rxjs/operators
+import { map } from 'rxjs/operators'; 
 import { SafeUrl } from '@angular/platform-browser';
 
 @Injectable({

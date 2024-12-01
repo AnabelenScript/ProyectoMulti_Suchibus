@@ -19,6 +19,8 @@ export interface Chofer {
   imagen_url?: string;
   tipo_usuario: TipoUsuario;
   status: '';
+  terminal_id: number;
+
 }
 export interface Administrador {
   id?: number;
@@ -39,7 +41,6 @@ export interface Administrador {
   imagen_url?: string;
   tipo_usuario: TipoUsuario;
   status: '';
-  terminal_id: '',
 }
 export interface User {
     id?: number;

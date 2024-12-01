@@ -19,8 +19,8 @@ const routes: Routes = [
   { path: 'terminal/:id', component: TerminalComponent, canActivate: [authGuard] },
   { path: '', redirectTo: '/terminales', pathMatch: 'full' },
   { path: 'unidadeslist/:terminalId', component: UnidadesListComponent, canActivate: [authGuard] },
-  { path: 'registrarChofer', component: AggChoferComponent, canActivate: [authGuard] },
-  { path: 'mostrarChoferes', component: ListChoferesComponent, canActivate: [authGuard] },
+  { path: 'registrarChofer/:terminalId', component: AggChoferComponent, canActivate: [authGuard] },
+  { path: 'mostrarChoferes/:terminalId', component: ListChoferesComponent, canActivate: [authGuard] },
   {path: 'registrarAdministrador', component: AggAdministradoresComponent, canActivate: [authGuard]},
   {path: 'mostrarAdministradores', component: ListAdministradoresComponent, canActivate: [authGuard]},
   {path: 'paradas', component: ParadasListComponent , canActivate: [authGuard]}
