@@ -10,6 +10,7 @@ interface Terminal {
   horarioApertura: string;
   horarioCierre: string;
   telefono: string;
+  ruta_id : String;
 }
 
 @Injectable({

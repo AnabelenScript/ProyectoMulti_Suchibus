@@ -10,4 +10,8 @@ export interface Unidad {
   terminal_id: number;
   status: string;  
   imagen_archivo: string;
+  num_asientos: number;
+  actual_cupo: number;
+  hora_salida: String;
+  hora_llegada: String;
 }

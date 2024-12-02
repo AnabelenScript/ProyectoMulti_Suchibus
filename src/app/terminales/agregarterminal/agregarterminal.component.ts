@@ -3,6 +3,7 @@ import { TerminalServiceagg } from './service';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../service';
 import { ActivatedRoute } from '@angular/router';
+import { Ruta } from '../../rutas/rutasModel';
 
 @Component({
   selector: 'app-agregarterminal',
@@ -21,11 +22,13 @@ export class AgregarterminalComponent {
     telefono: '',
     cp: '',
     estado: '',
-    administradorid: null 
+    administradorid: null,
+     ruta_id: ''
   };
   administradorid: number | null = null;
   colonias: any[] = [];
   loadingColonias = false;
+  rutas: Ruta[] = []; 
 
   constructor(
     private terminalServiceagg: TerminalServiceagg,
@@ -34,6 +37,7 @@ export class AgregarterminalComponent {
   ) {}
 
   ngOnInit(): void {
+    this.cargarRutas()
     const administradorid = this.authService.getAdminId();
     console.log('Admin ID:', administradorid); // Verificar el valor
     if (administradorid) {
@@ -145,4 +149,22 @@ export class AgregarterminalComponent {
     }
   
   }
+  cargarRutas(): void {
+    this.terminalServiceagg.obtenerRutas().subscribe({
+      next: (response: Ruta[]) => {
+        console.log('Rutas obtenidas:', response);
+        this.rutas = response;
+      },
+      error: (err) => {
+        console.error('Error al obtener rutas:', err);
+        Swal.fire('Error', 'No se pudieron cargar las rutas', 'error');
+      }
+    });
+  }
+
+  cargarRutaByid(id: number): void{
+    this.terminalServiceagg.obtenerRutasById(this.terminalData.ruta_id).subscribe(
+    )
+  }
+
 }

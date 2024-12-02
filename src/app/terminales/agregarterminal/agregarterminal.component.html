@@ -27,7 +27,12 @@
       <div class="input-group">
         <input type="text" placeholder="Horario de apertura" [(ngModel)]="terminalData.horarioApertura" (blur)="validarHorario('apertura')">
         <input type="text" placeholder="Horario de cierre" [(ngModel)]="terminalData.horarioCierre" (blur)="validarHorario('cierre')">      </div>
-      <button class="add-button" (click)="agregarTerminal()">Agregar</button>
+      
+      <div class="input-group">
+        <select [(ngModel)]="terminalData.ruta_id" aria-placeholder="Rutas">
+          <option *ngFor="let ruta of rutas" [value]="ruta._id">{{ ruta.nombre }}</option>
+        </select><button class="add-button" (click)="agregarTerminal()">Agregar</button>
+      </div>  
     </div>
 
   </div>
