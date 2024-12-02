@@ -36,7 +36,18 @@ export class UserComponent {
 
 
   }
-
+  verDetallesUsuario2(id: number): void {
+    this.userService.obtenerUsuarioPoId(id).subscribe(
+      (data: User) => {
+        this.selectUser = data; // Reemplaza el usuario actual con el obtenido por ID
+        this.showModal = true;  // Muestra el modal con los detalles del usuario
+      },
+      (error) => {
+        console.error('Error al obtener usuario por ID:', error);
+      }
+    );
+  }
+  
 }
 
 

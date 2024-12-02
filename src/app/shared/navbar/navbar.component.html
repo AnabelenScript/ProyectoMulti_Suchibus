@@ -2,7 +2,7 @@
   <i class='bx bx-arrow-back icon' (click)="goBack()"></i>
   <p><img src="assets/logo.png" alt="Logo" class="logo"></p>
   <div class="nav-links">
-    <i class='bx bxs-user-circle icon' (click)="verDetallesUsuario()"></i>
+    <i class='bx bxs-user-circle icon' (click)="verDetallesUsuario2()"></i>
     <i class='bx bx-menu icon' (click)="toggleMenu()"></i>
   </div>
 </div>
@@ -42,3 +42,43 @@
     </div>
   </div>
 </div>
+<div *ngIf="showModal && administradorSeleccionado" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="cerrarModal()"></span>
+    <h1>Detalles del Administrador</h1>
+    <form class="form-fields">
+      <div class="input-group">
+<input type="text" [(ngModel)]="administradorSeleccionado.nombre" name="nombre" placeholder="Nombre" disabled/>
+<input type="text" [(ngModel)]="administradorSeleccionado.lastname" name="lastname" placeholder="Apellido" disabled/>
+
+      </div>
+      <div class="input-group">
+        <input type="email" [(ngModel)]="administradorSeleccionado.email" name="Email" disabled/>
+        <input type="text" [(ngModel)]="administradorSeleccionado.username" name="Nombre de Usuario" disabled/>
+      </div>
+      <div class="input-group">
+        <input type="text" [(ngModel)]="administradorSeleccionado.telefono" name="Teléfono" disabled/>
+      </div>
+      <div class="input-group">
+        <input type="number" [(ngModel)]="administradorSeleccionado.edad" name="Edad" disabled/>
+        <input type="text" [(ngModel)]="administradorSeleccionado.experienciaLaboral" name="Experiencia Laboral" disabled/>
+        <input type="text" [(ngModel)]="administradorSeleccionado.status" name="Status" disabled/>
+      </div>
+      <div *ngIf="administradorSeleccionado.direccion">
+        <h3>Dirección</h3>
+        <div class="input-group">
+          <input type="text" [(ngModel)]="administradorSeleccionado.direccion.calle" name="Calle" disabled/>
+          <input type="text" [(ngModel)]="administradorSeleccionado.direccion.ciudad" name="Ciudad" disabled/>
+        </div>
+        <div class="input-group">
+          <input type="text" [(ngModel)]="administradorSeleccionado.direccion.estado" name="Estado" disabled/>
+          <input type="text" [(ngModel)]="administradorSeleccionado.direccion.codigoPostal" name="Código Postal" disabled/>
+        </div>
+      </div>
+    </form>
+    <div class="modal-buttons">
+      <button class="delete" (click)="cerrarModal()">cerrar</button>
+    </div>
+  </div>
+</div>
+
