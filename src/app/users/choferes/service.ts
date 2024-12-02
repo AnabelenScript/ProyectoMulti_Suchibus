@@ -7,7 +7,7 @@ import { Administrador, Chofer } from '../userModel';
   providedIn: 'root'
 })
 export class ChoferService {
-  private baseUrl = 'https://suchibusapi2.integrador.xyz';
+  private baseUrl = 'https://suchibusapi2.integrador.xyz/usuarios';
 
   constructor(private http: HttpClient) {}
 
