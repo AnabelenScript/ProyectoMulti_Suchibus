@@ -7,7 +7,8 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AuthService } from '../../service';
-
+import { ChoferService } from '../../users/choferes/service';
+import { Administrador } from '../../users/userModel';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -23,10 +24,12 @@ export class NavbarComponent  {
   menuOpen = false;
   showButton: boolean = false;
   canSeeAdminLink: boolean = false;
+  administradorSeleccionado?: Administrador;
+
 
   selectUser: User = { id: 0, nombre: '', email: '', password: '' };
 
-  constructor(private userService: UserService,private location: Location, private router: Router, private authservice: AuthService) {}
+  constructor(private userService: UserService,private location: Location, private router: Router, private authservice: AuthService,private choferService: ChoferService) {}
   ngOnInit(): void {
     const role = this.authservice.getRole();
     this.showButton = role === 'Administrador';
@@ -116,5 +119,54 @@ export class NavbarComponent  {
       );
     }
   }
+  verDetallesUsuario2(): void {
+    const userId = this.authservice.getAdminId(); // Obtén el ID del usuario actual
+    const userRole = this.authservice.getRole(); // Obtén el rol del usuario actual
   
+    if (!userId) {
+      console.error('El ID del usuario actual no está disponible.');
+      return;
+    }
+  
+    if (userRole === 'Administrador') {
+      // Mostrar detalles del administrador
+      this.mostrarDetallesAdministrador(userId);
+    } else if (userRole === 'Pasajero') {
+      this.userService.obtenerUsuarioActual().subscribe(
+        (data: User) => {
+          this.selectUser = data;
+          this.showModal = true;
+        },
+        (error) => {
+          console.error('Error al obtener usuario:', error);
+        }
+      );
+    } else {
+      console.error('Rol de usuario desconocido:', userRole);
+    }
+  }
+  mostrarDetallesAdministrador(id: number): void {
+    this.choferService.obtenerUsuarioPorIdAdmin(id).subscribe((data: Administrador) => {
+      if (data.direccion && typeof data.direccion === 'string') {
+        try {
+          data.direccion = JSON.parse(data.direccion);
+        } catch (error) {
+          console.error('Error al parsear la dirección:', error);
+          data.direccion = undefined;
+        }
+      }
+      this.administradorSeleccionado = data;
+      this.showModal = true; // Activa el modal
+    });
+  }
+  
+  cerrarModala(): void {
+    this.administradorSeleccionado = undefined; // Limpia los datos
+    this.showModal = false; // Cierra el modal
+  }
+  
+  abrirModal(administrador: any): void {
+  console.log('Administrador seleccionado:', administrador);
+  this.administradorSeleccionado = administrador;
+}    
 }

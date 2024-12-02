@@ -7,7 +7,7 @@ import { Parada } from './paradaModel';
   providedIn: 'root'
 })
 export class PuntosParadaService {
-  private readonly apiUrl = 'http://localhost:3000/paradas';
+  private readonly apiUrl = 'http://suchibusapi.integrador.xyz/paradas';
 
   constructor(private http: HttpClient) {}
   getParadaByIdRuta(id: string): Observable<Parada[]> {

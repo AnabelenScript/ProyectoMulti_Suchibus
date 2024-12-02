@@ -17,7 +17,6 @@ export class IniciarSesionComponent {
   constructor(private fb: FormBuilder, private loginService: LoginService, private router:Router,private authService: AuthService) {
 
     this.loginForm = this.fb.group({
-      nombre: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });

@@ -2,7 +2,7 @@
   <i class='bx bx-arrow-back icon' (click)="goBack()"></i>
   <p><img src="assets/logo.png" alt="Logo" class="logo"></p>
   <div class="nav-links">
-    <i class='bx bxs-user-circle icon' (click)="verDetallesUsuario()"></i>
+    <i class='bx bxs-user-circle icon' (click)="verDetallesUsuario2()"></i>
     <i class='bx bx-menu icon' (click)="toggleMenu()"></i>
   </div>
 </div>
@@ -26,7 +26,7 @@
 </div>
 
 <div *ngIf="showModal" class="modal-backdrop">
-  <div class="modal">
+  <div class="modal2">
     <h2>Detalles del Usuario</h2>
     <div class="input-modal">
       <label for="nombre">Nombre de Usuario:</label>
@@ -39,6 +39,45 @@
     <div class="button-group">
       <button (click)="actualizarUsuario()">Guardar Cambios</button>
       <button (click)="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="showModal && administradorSeleccionado" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="cerrarModal()"></span>
+    <h1>Detalles del Administrador</h1>
+    <form class="form-fields">
+      <div class="input-group">
+      <input type="text" [value]="'Nombre: '+administradorSeleccionado.nombre" name="nombre" placeholder="Nombre" disabled/>
+      <input type="text" [value]="'Apellidos: '+administradorSeleccionado.lastname" name="lastname" placeholder="Apellido" disabled/>
+
+      </div>
+      <div class="input-group">
+        <input type="email" [value]=" 'Email: ' + administradorSeleccionado.email"  disabled/>
+        <input type="text" [value]="'Usuario: '+ administradorSeleccionado.username"  disabled/>
+      </div>
+      <div class="input-group">
+        <input type="text" [value]="'Telefono: ' + administradorSeleccionado.telefono"  disabled/>
+      </div>
+      <div class="input-group">
+        <input   type="text" [value]="administradorSeleccionado.edad + ' años'"  disabled/>
+        <input type="text" [value]="'Experienci: '+ administradorSeleccionado.experienciaLaboral"  disabled/>
+        <input type="text" [value]="'Estatus: ' + administradorSeleccionado.status" name="Status" disabled/>
+      </div>
+      <div *ngIf="administradorSeleccionado.direccion">
+        <h3>Dirección</h3>
+        <div class="input-group">
+          <input type="text" [value]="'Calle: ' + administradorSeleccionado.direccion.calle" name="Calle" disabled/>
+          <input type="text" [value]="'Ciudad: ' + administradorSeleccionado.direccion.ciudad" name="Ciudad" disabled/>
+        </div>
+        <div class="input-group">
+          <input type="text" [value]="'Estado: ' + administradorSeleccionado.direccion.estado" name="Estado" disabled/>
+          <input type="text" [value]="'CP ' + administradorSeleccionado.direccion.codigoPostal" name="Código Postal" disabled/>
+        </div>
+      </div>
+    </form>
+    <div class="modal-buttons">
+      <button class="delete" (click)="cerrarModal()">cerrar</button>
     </div>
   </div>
 </div>
