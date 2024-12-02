@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TerminalServiceagg {
-  private apiUrl = 'http://suchibusapi2.integrador.xyz/terminales';
-  private apiUrl2 = 'http://suchibusapi2.integrador.xyz/colonias';
-  private apiRutas = 'http://suchibusapi.integrador.xyz/mapasRuta';
+  private apiUrl = 'https://suchibusapi2.integrador.xyz/terminales';
+  private apiUrl2 = 'https://suchibusapi2.integrador.xyz/colonias';
+  private apiRutas = 'https://suchibusapi.integrador.xyz/mapasRuta';
 
   constructor(private http: HttpClient) {}
 

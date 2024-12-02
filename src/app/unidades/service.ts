@@ -10,8 +10,8 @@ import { SafeUrl } from '@angular/platform-browser';
 })
 export class UnidadService {
 
-  private apiUrl = 'http://suchibusapi2.integrador.xyz/unidades';
-  private imageURL = 'http://suchibusapi2.integrador.xyz/drive/download'
+  private apiUrl = 'https://suchibusapi2.integrador.xyz/unidades';
+  private imageURL = 'https://suchibusapi2.integrador.xyz/drive/download'
 
   constructor(private http: HttpClient) {}
 

@@ -7,7 +7,7 @@ import { Ruta } from './rutasModel';
   providedIn: 'root'
 })
 export class RutaService {
-    private apiRutas = 'http://suchibusapi.integrador.xyz/mapasRuta';
+    private apiRutas = 'https://suchibusapi.integrador.xyz/mapasRuta';
 
   constructor(private http: HttpClient) {}
 
