@@ -62,8 +62,8 @@ export class UnidadService {
   
 
   
-  actualizarUnidad(id: number, data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, data);
+  actualizarUnidad(id: number, formData: FormData): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, formData);
   }
 
   eliminarUnidad(id: number): Observable<void> {

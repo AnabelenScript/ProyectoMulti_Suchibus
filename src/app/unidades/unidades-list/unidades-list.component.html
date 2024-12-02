@@ -2,6 +2,22 @@
 <div class="unidades">
   <div class="unidades-horario">
     <h2>Horario</h2>
+    <div class="horario-item">
+      <span>05:00 AM  ------- 5:40 AM</span>
+      <p>Hora de salida  -    Hora de llegada</p>
+    </div>
+    <div class="horario-item">
+      <span>10:00 AM  ------- 10:40 AM</span>
+      <p>Hora de salida  -    Hora de llegada</p>
+    </div>
+    <div class="horario-item">
+      <span>12:00 AM  ------- 12:40 AM</span>
+      <p>Hora de salida  -  Hora de llegada</p>
+    </div>
+    <div class="horario-item">
+      <span>02:00 PM  ------- 02:40 PM</span>
+      <p>Hora de salida  - Hora de llegada</p>
+    </div>
   </div>
   <div class="container">
     <h2>Unidades de la Terminal</h2>
@@ -22,7 +38,7 @@
     </div>
     <div class="buttons">
       <button *ngIf="showButton" (click)="abrirModal()">Agregar Unidad</button>
-      <button routerLink="/paradas">visualizar paradas</button>
+      <button (click)="visualizarParadas()">visualizar paradas</button>
     </div>
   </div>
 </div>
@@ -31,10 +47,6 @@
     <h2>Agregar Nueva Unidad</h2>
     <form (ngSubmit)="agregarUnidad()" #unidadForm="ngForm">
       <div class="part1">
-        <div>
-          <label for="Folio">Folio:</label>
-          <input type="text" id="folio" name="folio" required />
-        </div>
         <div>
           <label for="numPlaca">Número de Placa:</label>
           <input
@@ -68,6 +80,16 @@
             <option value="Toyota">Toyota</option>
           </select>
         </div>
+        <div>
+          <label for="num_asientos">Asientos:</label>
+          <input
+            type="text"
+            id="num_asientos"
+            name="num_asientos"
+            [(ngModel)]="unidad.num_asientos"
+            required
+          />
+        </div>
       </div>
       <div class="part2">
         <div>
@@ -87,11 +109,9 @@
               id="status"
               name="status"
               [(ngModel)]="unidad.status"
-              required
-            >
-              <option value="Lleno">Lleno</option>
-              <option value="inactivo">Inactivo</option>
-              <option value="mantenimiento">Mantenimiento</option>
+              required>
+              <option value="Inactivo">Inactivo</option>
+              <option value="Activo">Activo</option>
             </select>
           </div>
           <div>
@@ -127,10 +147,6 @@
     <form (ngSubmit)="editarUnidad()" #unidadForm="ngForm">
       <div class="part1">
         <div>
-          <label for="Folio">Folio:</label>
-          <input type="text" id="folio" [value]="selectedUnidad?.id" name="folio" disabled />
-        </div>
-        <div>
           <label for="numPlaca">Número de Placa:</label>
           <input
             [value]="selectedUnidad?.numPlaca"
@@ -163,6 +179,17 @@
             required
           />
         </div>
+        <div>
+          <label for="numAsientos">Numero de asientos:</label>
+          <input
+            [value]="selectedUnidad?.num_asientos"
+            type="text"
+            id="num_asientos"
+            name="num_asientos"
+            [(ngModel)]="unidad.num_asientos"
+            required
+          />
+        </div>
       </div>
       <div class="part2">
         <div>
@@ -177,41 +204,35 @@
           />
         </div>
         <div>
-          <div>
-            <label for="status">Estado de la Unidad:</label>
-            <select
-              [value]="selectedUnidad?.status"
-              id="status"
-              name="status"
-              [(ngModel)]="unidad.status"
-              required
-            >
-              <option value="activo">Activo</option>
-              <option value="inactivo">Inactivo</option>
-              <option value="mantenimiento">Mantenimiento</option>
-            </select>
-          </div>
+          <label for="status">Estado de la Unidad:</label>
+          <select
+            [value]="selectedUnidad?.status"
+            id="status"
+            name="status"
+            [(ngModel)]="unidad.status"
+            required
+          >
+            <option value="activo">Activo</option>
+            <option value="inactivo">Inactivo</option>
+            <option value="mantenimiento">Mantenimiento</option>
+          </select>
         </div>
         <div class="photocontainer">
-          <div class="add2">
-            <button class="noselecto" type="button">
-              <span class="text">Editar imagen</span>
-            </button>
-          </div>
           <div class="imgcontainer">
-            <img *ngIf="unidad.imagen_url" [src]="unidad.imagen_url" alt="Imagen de la unidad" class="imagen-unidad" /> </div>
+            <img *ngIf="unidad.imagen_url" [src]="unidad.imagen_url" alt="Imagen de la unidad" class="imagen-unidad" />
+          </div>
         </div>
       </div>
     </form>
     <div class="buttons3">
-      <button (click)="editarUnidad()"
+      <button
+        (click)="editarUnidad()"
         type="submit"
         [disabled]="!unidadForm.form.valid"
         class="addingbutton"
       >
         Guardar cambios
       </button>
-      
       <button (click)="eliminarUnidad()" class="deletebutton">Eliminar</button>
       <button (click)="cerrarModal()" class="cancelbutton2">Cerrar</button>
     </div>

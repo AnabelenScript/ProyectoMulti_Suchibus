@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class TerminalServiceagg {
   private apiUrl = 'http://127.0.0.1:5000/terminales';
   private apiUrl2 = 'http://127.0.0.1:5000/colonias';
+  private apiRutas = 'http://localhost:3000/mapasRuta';
 
   constructor(private http: HttpClient) {}
 
@@ -18,5 +19,13 @@ export class TerminalServiceagg {
 
   obtenerColoniasPorCp(cp: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl2}?cp=${cp}`);
+  }
+
+  obtenerRutas(): Observable<any> {
+    return this.http.get(`${this.apiRutas}`);
+  }
+
+  obtenerRutasById(id: string): Observable<any> {
+    return this.http.get(`${this.apiRutas}/${id}`);
   }
 }

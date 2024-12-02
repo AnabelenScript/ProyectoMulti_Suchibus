@@ -20,8 +20,6 @@ export class UnidadesListComponent implements OnInit {
   mensaje: string | null = null;
   showButton: boolean = false;
 
-
-
   unidad: Unidad = {
     id: 0,
     numPlaca: '',
@@ -31,7 +29,11 @@ export class UnidadesListComponent implements OnInit {
     terminal_id: 0,
     imagen_url: '',
     status: 'activo'  ,
-    imagen_archivo: ''
+    imagen_archivo: '',
+    num_asientos: 0,
+    actual_cupo: 0,
+    hora_llegada: '',
+    hora_salida: ''
   };
 
   constructor(
@@ -105,7 +107,11 @@ export class UnidadesListComponent implements OnInit {
       imagen_url: '',
       terminal_id: this.terminalId || 0,
       status: 'activo' ,
-      imagen_archivo: ''
+      imagen_archivo: '',
+      num_asientos: 0,
+      actual_cupo: 0,
+      hora_llegada: '',
+      hora_salida: ''
     };
   }
   verUnidadDetalle(id: number): void {
@@ -134,7 +140,8 @@ export class UnidadesListComponent implements OnInit {
           modelo: this.unidad.modelo,
           marca: this.unidad.marca,
           fecha_compra: this.unidad.fecha_compra,
-          terminal_id: this.unidad.terminal_id
+          terminal_id: this.unidad.terminal_id,
+          num_asientos: this.unidad.num_asientos
         };
         this.unidadService.crearUnidad(unidadData, archivoSeleccionado).subscribe(
           (response) => {
@@ -145,6 +152,7 @@ export class UnidadesListComponent implements OnInit {
               confirmButtonText: 'Aceptar'
             }).then(() => {
               this.cerrarModal();
+              this.cargarUnidades();
             });
           },
           (error) => {
@@ -169,31 +177,49 @@ export class UnidadesListComponent implements OnInit {
   }
   
   editarUnidad(): void {
-    if (this.selectedUnidad) { 
-      this.unidadService.actualizarUnidad(this.selectedUnidad.id, this.unidad).subscribe(
-        (response) => {
-          Swal.fire({
-            title: 'Éxito',
-            text: 'Unidad editada correctamente.',
-            icon: 'success',
-            confirmButtonText: 'Aceptar',
-          }).then(() => {
-            this.cargarUnidades();  
-            this.cerrarModal(); 
-          });
-        },
-        (error: any) => { 
-          console.error('Error al editar la unidad:', error);
-          Swal.fire({
-            title: 'Error',
-            text: 'No se pudo editar la unidad. Intenta de nuevo más tarde.',
-            icon: 'error',
-            confirmButtonText: 'Aceptar',
-          });
-        }
-      );
-    }
+    if (this.selectedUnidad) {
+      // Validar datos antes de agregarlos a FormData
+      if (isNaN(this.unidad.num_asientos) || isNaN(this.unidad.actual_cupo) || isNaN(this.unidad.terminal_id)) {
+        Swal.fire({
+          title: 'Error',
+          text: 'Algunos campos tienen valores inválidos. Verifica los datos e inténtalo nuevamente.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+        });
+        return;
+      }
+        const formData = new FormData();
+        formData.append("numPlaca", this.unidad.numPlaca || "");
+        formData.append("status", this.unidad.status || "");
+        formData.append("modelo", this.unidad.modelo || "");
+        formData.append("marca", this.unidad.marca || "");
+        formData.append("fecha_compra", this.unidad.fecha_compra || "");
+        formData.append("num_asientos", String(this.unidad.num_asientos || ""));
+        this.unidadService.actualizarUnidad(this.selectedUnidad.id, formData).subscribe(
+          (response) => {
+            Swal.fire({
+              title: 'Éxito',
+              text: 'Unidad editada correctamente.',
+              icon: 'success',
+              confirmButtonText: 'Aceptar',
+            }).then(() => {
+              this.cargarUnidades();
+              this.cerrarModal();
+            });
+          },
+          (error: any) => {
+            console.error('Error al editar la unidad:', error);
+            Swal.fire({
+              title: 'Error',
+              text: 'No se pudo editar la unidad. Intenta de nuevo más tarde.',
+              icon: 'error',
+              confirmButtonText: 'Aceptar',
+            });
+          }
+        );
   }
+}
+  
   
   eliminarUnidad(): void {
     Swal.fire({
@@ -230,4 +256,9 @@ export class UnidadesListComponent implements OnInit {
         );
       }
     });
-  } }
+  } 
+
+  visualizarParadas(): void {
+    this.router.navigate(['/paradas', this.terminalId]);
+  }
+}

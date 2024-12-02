@@ -22,12 +22,16 @@ export class TerminalComponent implements OnInit {
     telefono: '',
     cp: '',
     estado: '',
+    ruta_id: ''
   };
   modalVisible: boolean = false;
   terminalId: number | null = null;
   colonias: any[] = [];
   loadingColonias = false;
   showButton: boolean = false;
+  modalRutaVisible: boolean = false;  // Modal de ruta
+  rutaSeleccionada: any = null;
+  selectedRutaUrl: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -96,6 +100,14 @@ export class TerminalComponent implements OnInit {
   cerrarModal() {
     this.modalVisible = false;
   }
+  abrirModalRuta() {
+    this.modalRutaVisible = true;
+  }
+
+  cerrarModalRuta() {
+    this.modalRutaVisible = false;
+  }
+
 
   guardarCambios() {
     // Validación de los campos
@@ -149,5 +161,22 @@ export class TerminalComponent implements OnInit {
         );
       }
     });
+  }
+  verRuta(id_ruta: string): void {
+    if (id_ruta) {
+      this.terminalServiceagg.obtenerRutasById(id_ruta).subscribe({
+        next: (ruta) => {
+          this.rutaSeleccionada = ruta;
+          this.selectedRutaUrl = this.rutaSeleccionada.mapaRutaUrl; 
+          this.abrirModalRuta(); 
+        },
+        error: (err) => {
+          console.error('Error al obtener la ruta:', err);
+          Swal.fire('Error', 'No se pudo cargar la ruta', 'error');
+        }
+      });
+    } else {
+      Swal.fire('Advertencia', 'Por favor, selecciona una ruta', 'warning');
+    }
   }
 }

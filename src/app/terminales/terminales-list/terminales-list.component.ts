@@ -13,6 +13,7 @@ interface Terminal {
   horarioCierre: string;
   telefono: string;
   administradorid: number;  
+  ruta_id: string;
 }
 
 @Component({

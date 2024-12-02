@@ -1,5 +1,5 @@
+<main>
 <h1 class="title">Paradas</h1>
-
 <div class="container">
   <div class="paradas-container">
     <h2>Paradas de la ruta</h2>
@@ -17,6 +17,7 @@
 <div id="modal" class="modal" *ngIf="selectedParadaUrl" (click)="cerrarModal()">
   <div class="modal-content">
     <h2>Detalle de la Parada</h2>
+    <p><strong>Punto de parada:</strong> {{ selectedParada?.location }}</p>
     <iframe
       [src]="selectedParadaUrl | safeUrl"
       width="600"
@@ -26,4 +27,4 @@
       allowfullscreen>
     </iframe>
   </div>
-</div>
+</div></main>

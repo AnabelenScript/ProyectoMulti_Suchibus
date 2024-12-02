@@ -1,3 +1,4 @@
+<div class="body1">
 <h1>Información de la Terminal</h1>
 <div class="terminales">
   <div class="terminal-container">
@@ -33,9 +34,10 @@
         <input id="horarioCierre" type="text" placeholder="Horario de Cierre" [(ngModel)]="terminal.horarioCierre" disabled />
       </div>
       <div class="buttons">
-        <button type="button" class="carlist" [routerLink]="['/unidadeslist', terminal.id]"><i class='bx bxs-bus' > </i></button>
-        <button type="button" class="edit" (click)="abrirModal()"><i class='bx bxs-edit-alt'> </i></button>
-        <button type="button" class="edit" [routerLink]="['/mostrarChoferes', terminal.id]"><i class='bx bxs-id-card'></i></button>
+        <button type="button" class="carlist" [routerLink]="['/unidadeslist', terminal.id]">Unidades <i class='bx bxs-bus' > </i></button>
+        <button type="button" class="edit" (click)="abrirModal()">Editar <i class='bx bxs-edit-alt'> </i></button>
+        <button type="button" class="edit" [routerLink]="['/mostrarChoferes', terminal.id]">Choferes <i class='bx bxs-id-card'></i></button>
+        <button type="button" class="edit" (click)="verRuta(terminal.ruta_id)">Ver ruta <img src="assets/ruta.png" alt=""></button>
       </div>
     </div>
   </div>
@@ -84,4 +86,27 @@
       <button class="dos" (click)="cerrarModal()"><i class='bx bx-x'></i></button>
     </div>
   </div>
+</div>
+
+<div class="modal" *ngIf="modalRutaVisible" (click)=cerrarModalRuta()>
+  <div class="modal-content">
+    <h2>Detalles de la Ruta</h2>
+    <div *ngIf="rutaSeleccionada">
+      <p><strong>Ruta:</strong> {{ rutaSeleccionada.nombre }}</p>
+      <p><strong>Origen:</strong> {{ rutaSeleccionada.origin }}</p>
+      <p><strong>Destino:</strong> {{ rutaSeleccionada.destination }}</p>
+      <iframe *ngIf="selectedRutaUrl"
+        [src]="selectedRutaUrl | safeUrl"
+        width="600"
+        height="450"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="modal-buttons">
+      <button routerLink="/parada">Ver paradas</button>
+    </div>
+  </div>
+</div>
 </div>
