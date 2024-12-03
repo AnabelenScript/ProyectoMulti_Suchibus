@@ -12,8 +12,8 @@
   <nav class="sidebar-nav">
     <ul>
       <li>
-        <a (click)="inicio()"><i class='bx bx-home bx-tada' ></i> <span>Inicio</span></a>
         <ul class="nav-flyout">
+          <a routerLink="/terminales"><i class='bx bx-home bx-tada' ></i> <span>Inicio</span></a>
           <a *ngIf="canSeeAdminLink" (click)="mostrarAdministradores()">
             <i class='bx bxs-user-detail'></i> 
             <span>Administradores</span>

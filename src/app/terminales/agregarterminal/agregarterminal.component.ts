@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { AuthService } from '../../service';
 import { ActivatedRoute } from '@angular/router';
 import { Ruta } from '../../rutas/rutasModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agregarterminal',
@@ -34,6 +35,7 @@ export class AgregarterminalComponent {
     private terminalServiceagg: TerminalServiceagg,
     private authService: AuthService,
     private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -127,6 +129,7 @@ export class AgregarterminalComponent {
     this.terminalServiceagg.agregarTerminal(this.terminalData).subscribe(
       (response) => {
         Swal.fire('Éxito', 'Terminal creada exitosamente', 'success');
+        this.router.navigate(['/terminales'])
       },
       (error) => {
         console.error('Error al crear la terminal:', error);

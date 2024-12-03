@@ -230,10 +230,11 @@
         type="submit"
         [disabled]="!unidadForm.form.valid"
         class="addingbutton"
+        *ngIf="showButton"
       >
         Guardar cambios
       </button>
-      <button (click)="eliminarUnidad()" class="deletebutton">Eliminar</button>
+      <button *ngIf="showButton" (click)="eliminarUnidad()" class="deletebutton">Eliminar</button>
       <button (click)="cerrarModal()" class="cancelbutton2">Cerrar</button>
     </div>
   </div>

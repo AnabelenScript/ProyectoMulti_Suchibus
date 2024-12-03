@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms'; // Importa FormsModule
 import { UserService } from '../../users/service';
 import { User } from '../../users/userModel';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Location } from '@angular/common';
 import { AuthService } from '../../service';
 import { ChoferService } from '../../users/choferes/service';
@@ -15,6 +15,7 @@ import { Administrador } from '../../users/userModel';
   imports: [
     CommonModule,
     FormsModule,
+    RouterLink
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
