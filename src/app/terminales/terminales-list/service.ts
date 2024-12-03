@@ -17,7 +17,7 @@ interface Terminal {
   providedIn: 'root'
 })
 export class TerminalService {
-  private apiUrl = 'http://98.83.89.37/terminales'; 
+  private apiUrl = 'https://suchibusapi2.integrador.xyz/terminales'; 
 
   constructor(private http: HttpClient) {}
 

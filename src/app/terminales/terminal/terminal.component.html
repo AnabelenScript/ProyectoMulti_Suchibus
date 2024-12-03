@@ -34,9 +34,9 @@
         <input id="horarioCierre" type="text" placeholder="Horario de Cierre" [(ngModel)]="terminal.horarioCierre" disabled />
       </div>
       <div class="buttons">
-        <button type="button" class="carlist" [routerLink]="['/unidadeslist', terminal.id]">Unidades <i class='bx bxs-bus' > </i></button>
-        <button type="button" class="edit" (click)="abrirModal()">Editar <i class='bx bxs-edit-alt'> </i></button>
-        <button type="button" class="edit" [routerLink]="['/mostrarChoferes', terminal.id]">Choferes <i class='bx bxs-id-card'></i></button>
+        <button type="button" class="carlist" [routerLink]="['/unidadeslist', terminal.id]" >Unidades <i class='bx bxs-bus' > </i></button>
+        <button type="button" class="edit" (click)="abrirModal()" *ngIf="showButton">Editar <i class='bx bxs-edit-alt'> </i></button>
+        <button type="button" class="edit" [routerLink]="['/mostrarChoferes', terminal.id]" *ngIf="showButton">Choferes <i class='bx bxs-id-card'></i></button>
         <button type="button" class="edit" (click)="verRuta(terminal.ruta_id)">Ver ruta <img src="assets/ruta.png" alt=""></button>
       </div>
     </div>
@@ -107,5 +107,6 @@
     <div class="modal-buttons">
     </div>
   </div>
+  <button (click)="visualizarParadas()">visualizar paradas</button>
 </div>
 </div>

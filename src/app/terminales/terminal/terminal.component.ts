@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../service';
 import { TerminalService } from '../terminales-list/service';
 import { TerminalServiceagg } from '../agregarterminal/service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-terminal',
@@ -37,7 +38,8 @@ export class TerminalComponent implements OnInit {
     private route: ActivatedRoute,
     private terminalService: TerminalService,
     private authservice: AuthService,
-    private terminalServiceagg: TerminalServiceagg
+    private terminalServiceagg: TerminalServiceagg, 
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -178,5 +180,8 @@ export class TerminalComponent implements OnInit {
     } else {
       Swal.fire('Advertencia', 'Por favor, selecciona una ruta', 'warning');
     }
+  }
+  visualizarParadas(): void {
+    this.router.navigate(['/paradas', this.terminalId]);
   }
 }

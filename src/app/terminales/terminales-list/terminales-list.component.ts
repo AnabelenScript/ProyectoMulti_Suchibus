@@ -58,7 +58,7 @@ verTerminal(terminalId: number): void {
 
   if (role === 'Pasajero') {
     console.log('El rol es Pasajero, redirigiendo a unidades');
-    this.router.navigate(['/unidadeslist', terminalId]);
+    this.router.navigate(['/terminal', terminalId]);
     return;
   }
 
