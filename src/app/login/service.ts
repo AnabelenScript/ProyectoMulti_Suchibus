@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginService {
-  private baseUrl = 'https://suchibusapi2.integrador.xyz/usuarios';
+  private baseUrl = 'http://98.83.89.37/usuarios';
 
   constructor(private http: HttpClient) {}
 

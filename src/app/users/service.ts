@@ -7,7 +7,7 @@ import { User } from './userModel';
   providedIn: 'root',
 })
 export class UserService {
-  private apiurl = 'https://suchibusapi2.integrador.xyz/usuarios';
+  private apiurl = 'http://98.83.89.37/usuarios';
 
   constructor(private http: HttpClient) {}
 
